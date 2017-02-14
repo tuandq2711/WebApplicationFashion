@@ -1,0 +1,130 @@
+#contact_form_container #human_test {
+	width: 40px;
+}
+#contact_form_container label {
+    display: block;
+    margin-top: 5px;
+}
+#contact_form_container input[type='text'],
+#contact_form_container input[type='email'],
+#contact_form_container input[type='button'],
+#contact_form_container input[type='submit'],
+#contact_form_container select,
+#contact_form_container textarea {
+	width: 95%;
+    margin-top: 5px;
+}
+
+#contact_form_container {
+	padding: 10px;
+}
+
+
+#contact_popup{ 
+	position: fixed; 
+	clear: both; 
+	width: 300px; 
+	
+	border: none; 
+	padding: 0 0 0 0; 
+
+/*	border-top: 3px solid black;
+	border-left: 3px solid black;
+	border-right: 3px solid black;*/
+	background-color: white;
+	border: 3px solid #E85350;
+-webkit-border-top-right-radius: 10px;
+-moz-border-radius-topright: 10px;
+border-top-right-radius: 10px;
+}
+
+.add_footer {
+	height: 400px !important;
+}
+
+
+#contact_header {
+	float: left;
+	  background-color: #e85050 !important;
+
+	width: 100px;
+	margin-top: -37px;
+	margin-left: -3px;
+	
+	color: white;
+	height: 37px;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	padding-left: 20px;
+	background-image: url('../img/email_icon.png');
+	background-position: 10px 6px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+.social_icon {
+	background-position: 5px 6px;
+	background-repeat: no-repeat;
+-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+	float: left;
+	margin-top: -37px;
+	width: 30px;
+	height: 34px;
+
+}
+
+#contact_message_sent {
+	display: none;
+	background-image: url('../img/message_sent.png');
+	background-position: 5px 5px;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	padding-top: 6px;
+	min-height: 30px;
+}
+#contact_message_error {
+	display: none;
+	background-image: url('../img/message_error.png');
+	background-position: 5px 5px;
+	background-repeat: no-repeat;
+	padding-left: 30px;
+	padding-top: 6px;
+	min-height: 30px;
+}
+
+#contact_header:hover {
+	margin-top: -40px;
+}
+
+.social_icon:hover {
+	margin-top: -40px;
+	height: 37px;
+}
+
+#contact_facebook {
+	background-image: url('../img/facebook.png');
+	background-color: #3B5998;
+	margin-left: 150px;
+}
+
+#contact_twitter {
+	background-image: url('../img/twitter.png');
+	background-color: #00ACED;
+	margin-left: 190px;
+}
+
+#contact_google {
+	background-image: url('../img/google.png');
+	background-color: #D14433;
+	margin-left: 230px;
+}

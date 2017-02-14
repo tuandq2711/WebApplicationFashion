@@ -1,0 +1,179 @@
+#cpanel_wrapper {
+    background:#FFF;
+	border:1px solid #CCC;
+	border-right:none;
+    color: #555;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+    padding:10px 15px 15px;
+    position: fixed;
+    top: 20%;
+    width: 300px;
+    z-index: 99999;
+	right:-300px;
+}
+
+#cpanel_wrapper input.inputbox{
+	border-radius: 0 0 0 0 !important;
+    box-shadow: none !important;
+    font-size: 11px !important;
+    margin: 0 3px 0 0 !important;
+    padding: 0 3px !important;
+    width: 80px !important;
+}
+select.cp_select{
+	font-size: 11px;
+    height: auto;
+    padding: 2px;
+    width: 120px;
+	border-radius:0px;
+}
+
+#cpanel_wrapper input.inputbox{
+	border-radius: 0 0 0 0 !important;
+    box-shadow: none !important;
+    font-size: 11px !important;
+    margin: 0 3px 0 0 !important;
+    padding: 0 3px !important;
+    width: 80px !important;
+}
+select.cp_select{
+	font-size: 11px;
+    height: auto;
+    padding: 2px;
+    width: 120px;
+	border-color:#CCC;
+	color:inherit;
+	border-radius:0px;
+}
+
+.cpanel-head{
+	font-size:14px;
+	font-weight:bold;
+	text-transform:uppercase;
+	padding:0 0 5px;;
+	border-bottom:1px solid #CCC;
+}
+.theme-color-heading{
+	font-weight:bold;
+	padding: 5px 0;
+	display:block;
+}
+.cpanel-theme-color .theme-color.active{box-shadow: 0 0 0 2px rgba(0,0,0,0.4) inset;}
+.cpanel-theme-color .theme-color {
+	background-color:#363636;
+	width:34px;
+	height:34px;
+	line-height:35px;
+	text-align:center;
+	float:left;
+	margin:0 5px 5px 0;
+	cursor:pointer;
+	overflow: hidden;text-indent: 100%;white-space: nowrap;
+}
+.cpanel-theme-color .theme-color:last-child{
+	margin-right: 0;
+}
+.cpanel-theme-color .theme-color:hover{opacity: 0.7;}
+
+
+#cpanel_wrapper input.miniColors{border-color: #ccc;}
+#ytcpanel_accordion .accordion-group{
+	border:none;
+	border-bottom:1px solid #CCC;
+	border-radius:0;
+}
+#ytcpanel_accordion .accordion-heading .accordion-toggle{
+	padding:3px 0;
+	color:#555;
+	font-weight:bold;
+}
+#ytcpanel_accordion .cp-item{
+	width:33%;
+	float:left;
+}
+#ytcpanel_accordion .cp-item.body-backgroud-image{
+	width:100%;
+}
+#ytcpanel_accordion .cpanel-footer .cp-item.footer-backgroud-image,
+#ytcpanel_accordion .cpanel-header .cp-item.header-backgroud-image{
+	width:66%;
+}
+#ytcpanel_accordion .cpanel-typography .cp-item{
+	width:50%;
+}
+#ytcpanel_accordion .accordion-inner{
+	padding:5px 5px 25px;
+	border:none;
+}
+
+.cp-item .pattern{
+	height: 20px;
+    margin: 0 3px 0 0;
+    width: 30px;
+	border:1px solid #CCC;
+	float:left;
+	cursor:pointer;
+	text-indent:-999em;
+	background-color: #ddd;
+}
+
+.cp-item .pattern:hover{background-color: #ccc; border-color: #ccc #ccc #999999 #999999;}
+.cp-item .pattern.active{border-color:#999999;}
+
+.cp-item .pattern:hover{background-color: #999; border-color: #666;}
+.cp-item .pattern.active{
+	border-color:#5BC0DE;
+}
+
+#cpanel_wrapper a.reset{
+	margin:0 0 0 10px;
+	color:#000;
+}
+
+.cpanel-input{
+	padding:1px 5px !important;
+	width:30px;
+	font-size:11px !important;
+}
+.cpanel-select{
+	height: auto;
+    padding: 2px !important;
+    width: 90px;
+	font-size:11px !important;
+}
+#cpanel_btn{
+	background:#FFF;
+	width:atuo;
+	border:1px solid #CCC;
+	border-right:none;
+	position:absolute;
+	font-size: 20px;
+    left: -45px;
+	width: 45px;
+    line-height: normal;
+	top:30px;
+	padding:10px 12px;
+	cursor:pointer
+}
+#cpanel_btn i{
+	vertical-align:top;
+}
+#cpanel_wrapper .action .btn {
+	font-size:14px;
+	color:#FFF !important;
+	padding:4px 15px;
+}
+#cpanel_wrapper .action .btn-primary {
+	background: #36c2b9;
+	border: #36c2b9;
+}
+.action {
+	padding:10px 0;
+}
+.action a {
+	color:#fff !important;
+}
+.cpanel [class^="icon-"]:before, .cpanel [class*=" icon-"]:before , #back-to-top [class^="icon-"]:before, #back-to-top [class*=" icon-"]:before{
+	font-family: FontAwesome ;
+}

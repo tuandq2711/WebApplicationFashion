@@ -1,0 +1,50 @@
+﻿@using System.Web.Configuration
+<!DOCTYPE html>
+<html lang="vi-Vn" dir="ltr" class='com_content view-category layout-blog itemid-196 j34 mm-hover no-touch'>
+<head>
+    <base href="@WebConfigurationManager.AppSettings["SiteUrl"].ToString()" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="FashionGo - Thời trang đầm, váy, áo thun, áo khoác...!" />
+    <link href="~/Content/images/favicon-fashiongo.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <title>@Html.Raw(ViewBag.Title)</title>
+
+    @RenderSection("HeaderMetas", false)
+
+    @Styles.Render("~/Assets/Frontend/FashionPro")
+    @Styles.Render("~/Content/style")
+
+    @Scripts.Render("~/Assets/Frontend/jquery")
+    @RenderSection("HeaderScripts", false)
+
+    @Html.Partial("Partials/_HeaderScripts")
+
+</head>
+
+<body class="bd">
+    <div class="t3-wrapper">
+        <!-- HEADER -->
+        @Html.Action("Header", "Home")
+
+        @{ Html.RenderPartial("_Alerts"); }
+
+        <div id="t3-mainbody" class="container t3-mainbody">
+            <div class="row">
+                <!-- MAIN CONTENT -->
+                <div id="t3-content" class="t3-content col-xs-12 col-sm-8  col-md-9">
+                    @RenderBody()
+                </div>
+                <div class="t3-sidebar t3-sidebar-right col-xs-12 col-sm-4  col-md-3">
+                    @Html.Action("_Sidebar", "Blogs")
+                </div>
+            </div>
+        </div>
+        <!-- FOOTER -->
+        @Html.Action("Footer", "Home")
+        <!-- //FOOTER -->
+        @Html.Partial("Partials/_ScrollToTop")
+    </div>
+</body>
+@Scripts.Render("~/BootstrapValidator/jquery")
+@RenderSection("Scripts", false)
+</html>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Product>
+@using System.Web.Configuration
+@if (Model.Count() > 0)
+{
+    var rd = new Random();
+    <div class="wrap t3-featured-product">
+        <div class="container">
+            <div class="t3-module module " id="Mod116">
+                <div class="module-inner">
+                    <h3 class="module-title "><span>Sản phẩm nổi bật</span></h3><div class="module-ct">
+                        <div class="eshop-product">
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="eshop_product col-lg-2 col-xs-12 col-md-2">
+                                        <div class="eshop-wrap-product">
+                                            <div class="eshop-image-block">
+                                                <div class="image">
+                                                    <span class="overlay-background-color">&nbsp;</span>
+                                                    <a href="@Url.RouteUrl("ProductDetails", new { slug = item.Name.ToAscii(), id = item.Id })" title="@item.Name">
+                                                        <img id="product-image-@item.Id" class="image img-responsive" alt="@item.Name" src="@item.FeaturedImage">
+                                                    </a>
+                                                </div>
+                                                <div class="eshop-buttons">
+                                                    <p>
+                                                        <a class="button" style="cursor: pointer;" onclick="addToWishList(@item.Id, '@WebConfigurationManager.AppSettings["SiteName"].ToString()')" title="Đánh dấu sản phẩm yêu thích"><i class="fa fa-heart"></i><span class="text-hide">Yêu thích</span></a>
+                                                        <a class="button" style="cursor: pointer;" href="@Url.RouteUrl("ProductDetails", new { slug = item.Name.ToAscii(), id = item.Id })" title="Xem chi tiết"><i class="fa fa-arrow-right"></i><span class="text-hide">Chi tiết</span></a>
+                                                    </p>
+                                                    <div class="eshop-cart-area">
+                                                        <button id="add-to-cart-@item.Id" class="btn btn-primary" onclick="flyToCart(@item.Id); ">Thêm vào giỏ</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h4 class="eshop-product-title">
+                                                <a href="@Url.RouteUrl("ProductDetails", new { slug = item.Name.ToAscii(), id = item.Id })" title="@item.Name">
+                                                    @item.Name
+                                                </a>
+                                            </h4>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-xs-6">
+                                                    <div>
+                                                        <div class="product-review">
+                                                            <p>
+                                                                <i class="fa fa-tag" aria-hidden="true"></i>@rd.Next(10)  <i class="fa fa-eye" aria-hidden="true"></i>@item.Views
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-xs-6">
+                                                    @if (item.Discount.Value > 0)
+                                                    {
+                                                        <span class="eshop-base-price">@Html.FormatValue(item.Price, "{0:0,0}")đ</span>
+                                                    }
+                                                    <span class="eshop-price">@Html.FormatValue(item.PriceAfter, "{0:0,0}")đ</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

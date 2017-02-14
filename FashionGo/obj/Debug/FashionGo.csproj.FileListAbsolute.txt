@@ -1,0 +1,172 @@
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\csc.exe
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\System.Collections.Immutable.dll
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\System.Reflection.Metadata.dll
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\vbc.exe
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\VBCSCompiler.exe
+D:\ASPNET\FashionGo\FashionGo\bin\roslyn\VBCSCompiler.exe.config
+D:\ASPNET\FashionGo\FashionGo\bin\FashionGo.dll.config
+D:\ASPNET\FashionGo\FashionGo\bin\FashionGo.dll
+D:\ASPNET\FashionGo\FashionGo\bin\FashionGo.pdb
+D:\ASPNET\FashionGo\FashionGo\bin\Antlr3.Runtime.dll
+D:\ASPNET\FashionGo\FashionGo\bin\CKFinder.dll
+D:\ASPNET\FashionGo\FashionGo\bin\CKFinder_FileEditor.dll
+D:\ASPNET\FashionGo\FashionGo\bin\CKFinder_ImageResize.dll
+D:\ASPNET\FashionGo\FashionGo\bin\CKFinder_Watermark.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Commons.dll
+D:\ASPNET\FashionGo\FashionGo\bin\EntityFramework.dll
+D:\ASPNET\FashionGo\FashionGo\bin\EntityFramework.SqlServer.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.AspNet.Identity.Core.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.Cookies.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.Facebook.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.Google.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.OAuth.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.Twitter.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Web.Infrastructure.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Newtonsoft.Json.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Owin.dll
+D:\ASPNET\FashionGo\FashionGo\bin\PagedList.dll
+D:\ASPNET\FashionGo\FashionGo\bin\PagedList.Mvc.dll
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.Helpers.dll
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.Mvc.dll
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.Optimization.dll
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.Razor.dll
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.WebPages.Deployment.dll
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.WebPages.dll
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.WebPages.Razor.dll
+D:\ASPNET\FashionGo\FashionGo\bin\WebGrease.dll
+D:\ASPNET\FashionGo\FashionGo\bin\Commons.pdb
+D:\ASPNET\FashionGo\FashionGo\bin\CKFinder.pdb
+D:\ASPNET\FashionGo\FashionGo\bin\CKFinder_FileEditor.pdb
+D:\ASPNET\FashionGo\FashionGo\bin\CKFinder_ImageResize.pdb
+D:\ASPNET\FashionGo\FashionGo\bin\CKFinder_Watermark.pdb
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\ASPNET\FashionGo\FashionGo\bin\PagedList.xml
+D:\ASPNET\FashionGo\FashionGo\bin\PagedList.Mvc.xml
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.Helpers.xml
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.Mvc.xml
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.Optimization.xml
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.Razor.xml
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.WebPages.xml
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.WebPages.Deployment.xml
+D:\ASPNET\FashionGo\FashionGo\bin\System.Web.WebPages.Razor.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Antlr3.Runtime.pdb
+D:\ASPNET\FashionGo\FashionGo\bin\Newtonsoft.Json.xml
+D:\ASPNET\FashionGo\FashionGo\bin\EntityFramework.xml
+D:\ASPNET\FashionGo\FashionGo\bin\EntityFramework.SqlServer.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.AspNet.Identity.Core.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.Facebook.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.Cookies.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.OAuth.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.Google.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.Twitter.xml
+D:\ASPNET\FashionGo\FashionGo\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\ASPNET\FashionGo\FashionGo\bin\vi\Commons.resources.dll
+D:\ASPNET\FashionGo\FashionGo\obj\Debug\FashionGo.csprojResolveAssemblyReference.cache
+D:\ASPNET\FashionGo\FashionGo\obj\Debug\FashionGo.Migrations.new98.resources
+D:\ASPNET\FashionGo\FashionGo\obj\Debug\FashionGo.csproj.GenerateResource.Cache
+D:\ASPNET\FashionGo\FashionGo\obj\Debug\FashionGo.dll
+D:\ASPNET\FashionGo\FashionGo\obj\Debug\FashionGo.pdb
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\csc.exe
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\System.Collections.Immutable.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\System.Reflection.Metadata.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\vbc.exe
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\VBCSCompiler.exe
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\roslyn\VBCSCompiler.exe.config
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\FashionGo.dll.config
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\FashionGo.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\FashionGo.pdb
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Antlr3.Runtime.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\CKFinder.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\CKFinder_FileEditor.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\CKFinder_ImageResize.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\CKFinder_Watermark.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Commons.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\EntityFramework.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\EntityFramework.SqlServer.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.Google.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Web.Infrastructure.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Newtonsoft.Json.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Owin.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\PagedList.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\PagedList.Mvc.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.Helpers.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.Mvc.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.Optimization.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.Razor.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.WebPages.Deployment.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.WebPages.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.WebPages.Razor.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\WebGrease.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Commons.pdb
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\CKFinder.pdb
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\CKFinder_FileEditor.pdb
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\CKFinder_ImageResize.pdb
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\CKFinder_Watermark.pdb
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\PagedList.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\PagedList.Mvc.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.Helpers.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.Mvc.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.Optimization.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.Razor.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.WebPages.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.WebPages.Deployment.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\System.Web.WebPages.Razor.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Antlr3.Runtime.pdb
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Newtonsoft.Json.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\EntityFramework.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\EntityFramework.SqlServer.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.Google.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Projects\ASP\FashionGo - full\FashionGo\bin\vi\Commons.resources.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\obj\Debug\FashionGo.csprojResolveAssemblyReference.cache
+E:\Projects\ASP\FashionGo - full\FashionGo\obj\Debug\FashionGo.Migrations.new98.resources
+E:\Projects\ASP\FashionGo - full\FashionGo\obj\Debug\FashionGo.csproj.GenerateResource.Cache
+E:\Projects\ASP\FashionGo - full\FashionGo\obj\Debug\FashionGo.dll
+E:\Projects\ASP\FashionGo - full\FashionGo\obj\Debug\FashionGo.pdb

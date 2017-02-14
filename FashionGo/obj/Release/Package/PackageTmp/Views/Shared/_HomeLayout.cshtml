@@ -1,0 +1,45 @@
+﻿@using System.Web.Configuration
+<!DOCTYPE html>
+<html lang="vi-Vn" dir="ltr" class='com_eshop view-frontpage itemid-101 home j34 mm-hover'>
+<head>
+    <base href="@WebConfigurationManager.AppSettings["SiteUrl"].ToString()"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="FashionGo - Thời trang đầm, váy, áo thun, áo khoác...!" />
+    <link href="~/Content/images/favicon-fashiongo.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <title>@Html.Raw(ViewBag.Title)</title>
+
+    @RenderSection("HeaderMetas", false)
+
+    @Styles.Render("~/Assets/Frontend/FashionPro")
+    @Styles.Render("~/Content/style")
+
+    @Scripts.Render("~/Assets/Frontend/jquery")
+
+    @RenderSection("HeaderScripts", false)
+
+    @Html.Partial("Partials/_HeaderScripts")
+
+</head>
+
+<body class="bd">
+    <div class="t3-wrapper">
+        <!-- HEADER -->
+        @Html.Action("Header", "Home")
+
+        <!-- slideshow -->
+        @Html.Action("_SliderShow", "Home")
+
+        @{ Html.RenderPartial("_Alerts"); }
+
+        @RenderBody()
+
+        <!-- FOOTER -->
+        @Html.Action("Footer", "Home")
+        <!-- //FOOTER -->
+        @Html.Partial("Partials/_ScrollToTop")
+    </div>
+</body>
+@Scripts.Render("~/BootstrapValidator/jquery")
+@RenderSection("Scripts", false)
+</html>

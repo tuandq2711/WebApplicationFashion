@@ -1,0 +1,127 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.ProductCategory>
+@using System.Web.Configuration
+@using FashionGo.Models.Dao
+
+<nav class="wrap t3-shop-by-cat ">
+    <div class="container">
+        <div class="t3-module module " id="Mod98">
+            <div class="module-inner">
+                <h3 class="module-title "><span>Danh mục sản phẩm</span></h3><div class="module-ct">
+                    <div class="eshop-product-tabs">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="tabbable default">
+                                    <ul class="nav nav-pills nav-stacked" id="productTab">
+                                        @{ 
+                                            var rel = 0;
+                                            var data = 66;
+                                        }
+                                        @foreach (var cat in Model)
+                                        {
+                                            var activeClass = rel == 0 ? "active" : "";
+
+                                            <li class="@activeClass"><a href="#category-tab-@rel@data" rel="@rel" data="@data" data-toggle="tab">@cat.Name</a></li>
+
+                                            rel++;
+                                        }
+                                    </ul>
+                                    <div class="tab-content" id="productContent">
+                                        @{
+                                            rel = 0;
+                                        }
+                                        @foreach (var cat in Model)
+                                        {
+                                            var activeClass = rel == 0 ? "active" : "";
+                                            <input type="hidden" id="setcount-@rel" name="setcount-@rel" value="0" />
+                                            <div class="tab-pane @activeClass row-fluid" id="category-tab-@rel@data">
+                                                <div class="category-desc span3">
+                                                    <p>@Html.Raw(cat.Description)</p>											
+                                                    <div class="category-view-all">
+                                                        <a class="btn btn-primary" href="@Url.RouteUrl("ProductCategory", new { slug = cat.Name.ToAscii(), id = cat.CatId })" title="Xem danh mục @cat.Name">
+                                                            Xem thêm...
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix span9">
+                                                    <ul id="item-container-@rel@data" class="product-tab-content row ">
+                                                        @foreach (var item in cat.AllProducts(18))
+                                                        {
+                                                            <li class="eshop-product-tab col-lg-4 col-md-4 col-xs-col-md-4">
+                                                                <div class="image">
+                                                                    <a href="@Url.RouteUrl("ProductDetails", new { slug = item.Name.ToAscii(), id = item.Id })" title="@item.Name">
+                                                                        <img class="image img-responsive" alt="@item.Name" src="@item.FeaturedImage">
+                                                                    </a>
+                                                                </div>
+                                                                <h4 class="eshop-product-title">
+                                                                    <a href="@Url.RouteUrl("ProductDetails", new { slug = item.Name.ToAscii(), id = item.Id })" class="link" data-original-title="@item.Name">
+                                                                        @item.Name
+                                                                    </a>
+                                                                </h4>
+                                                                <div class="row">
+                                                                    <div class="col-lg-6 col-md-6 col-xs-6">
+                                                                        @if (item.Discount.Value > 0)
+                                                                        {
+                                                                            <span class="eshop-base-price">@Html.FormatValue(item.Price, "{0:0,0}")đ</span>
+                                                                        }
+                                                                        <span class="eshop-price">@Html.FormatValue(item.PriceAfter, "{0:0,0}")đ</span>
+                                                                    </div>
+                                                                    <div class="col-lg-6 col-md-6 col-xs-6">
+                                                                        <button id="add-to-cart-@item.Id" class="btn btn-primary" onclick="addToCart(@item.Id, 1, '@WebConfigurationManager.AppSettings["SiteName"].ToString()'); ">Thêm vào giỏ</button>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="pagination pagination-toolbar" style="text-align: center; margin-top: 20px;">
+                                                    <ul class="pagination-list-@rel@data"></ul>
+                                                </div>
+                                            </div>
+                                            rel++;
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                            jQuery(function ($) {
+                                $(document).ready(function () {
+                                    loadPagination(0, @data);
+                                    $('#setcount-0').attr('value', 1);
+                                });
+                                $("ul#productTab li a").on('shown.bs.tab', function (e) {
+                                    var hClass = $('#productContent div').hasClass('active');
+                                    if (hClass) {
+                                        $('#productContent div').removeClass('animated bounceInUp');
+                                    }
+                                    var getCountData = $(this).attr('rel');
+                                    var getModuleId = $(this).attr('data');
+                                    if ($('#setcount-' + getCountData).val() != 1) {
+                                        loadPagination(getCountData, getModuleId);
+                                        $('#setcount-' + getCountData).val(1);
+                                    }
+                                    $('#category-tab-' + getCountData + getModuleId).addClass('animated bounceInUp')
+                                });
+                                loadPagination = (function (countData, moduleId) {
+                                    $("ul.pagination-list-" + countData + moduleId).eshopPagination({
+                                        containerID: "item-container-" + countData + moduleId,
+                                        first: "First",
+                                        last: "Last",
+                                        perPage: 3,
+                                        keyBrowse: true,
+                                        pause: 0,
+                                        clickStop: true,
+                                        scrollBrowse: false,
+                                        animation: "bounceIn",
+                                    });
+                                })
+
+                            })
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

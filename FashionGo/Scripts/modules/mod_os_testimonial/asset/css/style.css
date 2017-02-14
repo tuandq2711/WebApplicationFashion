@@ -1,0 +1,123 @@
+.os-module-testimonial a.carousel-control.right,
+.os-module-testimonial a.carousel-control.left {
+  background-image: none;
+}
+.osTestimonial .item {
+  padding: 0px;
+}
+.osTestimonial .left,
+.osTestimonial .right {
+  margin: 0px;
+  width: 100%;
+}
+.osTestimonial .carousel-control.right,
+.osTestimonial .carousel-control.left {
+  width: 12%;
+  background-image: none;
+}
+.osTestimonial .carousel-control.right span,
+.osTestimonial .carousel-control.left span {
+  text-shadow: none;
+}
+.osTestimonial .carousel-control.right:hover span,
+.osTestimonial .carousel-control.left:hover span {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+.osTestimonial .active {
+  padding: 0px;
+}
+.osTestimonial img.quote {
+  border: none;
+  width: 20px;
+  margin-top: -10px;
+}
+.osTestimonial img.avatar {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+}
+.osTestimonial a.carousel-control {
+  background: none;
+  border: none;
+  height: auto;
+  margin-top: 0px;
+}
+.osTestimonial a.carousel-control:hover {
+  background: none;
+}
+.osTestimonial a.carousel-control:link,
+.osTestimonial a.carousel-control:visited {
+  color: #ffffff;
+}
+.osTestimonial ol.carousel-indicators {
+  top: auto;
+  margin: 0px 0px 0px -30%;
+  bottom: -20px;
+}
+.osTestimonial ol.carousel-indicators li {
+  display: inline-block;
+  float: none;
+  border: 1px solid lightgray;
+  height: 10px;
+  width: 10px;
+  margin: 1px 5px 1px 1px;
+}
+.osTestimonial ol.carousel-indicators li.active {
+  float: none;
+  background-color: #269abc;
+  border: 1px solid blue;
+  height: 10px;
+  width: 10px;
+  margin: 1px 5px 1px 1px;
+}
+
+.osTestimonial .info {
+	text-align: center;
+}
+.osTestimonial p.content-testimonial {
+	display: inline-block;
+    font-size: 46px;
+    font-style: italic;
+    font-weight: 100;
+    min-height: 10px;
+	padding: 0 40px 20px;
+    position: relative;
+    text-align: center;
+	width: 80%;
+}
+.osTestimonial .name,
+.osTestimonial .email,
+.osTestimonial .position,
+.osTestimonial .website {
+  margin: 0;
+}
+.osTestimonial .name {
+	margin: 20px 0 0;
+	display: inline-block;
+	font-size: 15px;
+	font-weight: normal;
+}
+.osTestimonial .website a {
+  text-decoration: none;
+}
+.osTestimonial .tw-fb a {
+  padding: 2px 0px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #808080;
+}
+.osTestimonial .tw-fb a:hover {
+  color: #f5f5f5;
+  background-color: cornflowerblue;
+  box-shadow: 0px 1px 1px;
+}
+.osTestimonial .tw-fb a span {
+  padding: 0px 5px;
+}
+.osTestimonial .tw-fb a i {
+  padding: 5px 5px;
+}
+
+.os-module-testimonial .carousel {
+	margin: 0;
+}

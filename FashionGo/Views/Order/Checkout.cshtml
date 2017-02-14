@@ -1,0 +1,402 @@
+﻿@using FashionGo.Models.Entities
+@using FashionGo.Models
+@model Order
+
+@{
+    ViewBag.Title = "Đặt hàng";
+    Layout = "~/Views/Shared/_ClearLayout.cshtml";
+}
+
+<div id="checkoutPage">
+    @using (Html.BeginForm("Checkout", "Order", FormMethod.Post, new { id = "Checkout" }))
+    {
+
+        @Html.HiddenFor(model => model.UserId)
+
+        @Html.AntiForgeryToken()
+
+        <div class="row outer-bottom-xs">
+            <div class="col-md-7">
+                <h3 class="block-title"><i class="fa fa-user" aria-hidden="true"></i> THÔNG TIN NGƯỜI NHẬN</h3>
+                <div class="block block-white  block-bordered">
+
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                    @if (Request.IsAuthenticated == false)
+                    {
+                        <p class="alert alert-info">Bạn đã có tài khoản <i class="fa fa-hand-o-right" aria-hidden="true"></i> <a href="#loginform" class="btn-toggle text-danger" data-toggle="toggle" title="đăng nhập tại đây">đăng nhập tại đây. </a>Nếu chưa có tài khoản vui lòng điền thông tin của bạn vào form dưới đây.</p>
+
+                        <div id="loginform" class="alert alert-info" style="display: none;">
+                            <a href="#loginform" class="close btn-toggle" data-dismiss="alert" aria-hidden="true">&times;</a>
+
+                            <div class="form-inline">
+                                <p id="status" style="color: orangered; font-weight:bold;"></p>
+
+                                <div class="form-group">
+                                    @Html.TextBox("UserName", null, new { @class = "form-control unicase-form-control", placeholder = "Địa chỉ email..." })
+                                </div>
+                                <div class="form-group">
+                                    @Html.Password("Password", null, new { @class = "form-control unicase-form-control", placeholder = "Mật khẩu..." })
+                                </div>
+                                <div class="form-group">
+                                    <a id="btnLogin" class="btn btn-success"><i class="fa fa-sign-in"></i> Đăng nhập</a>
+                                </div>
+                            </div>
+                            <hr />
+                            @Html.Partial("~/Views/Account/_ExternalLoginsListPartial.cshtml", new ExternalLoginListViewModel { ReturnUrl = Request.Url.AbsolutePath })
+                        </div>
+                    }
+
+                    <!-- Thông tin người nhận -->
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <label class="control-label">Họ và tên</label>
+                                    @Html.TextBoxFor(model => model.ReceiveName, new { @class = "form-control", placeholder = "Nhập tên người nhận hàng..." })
+                                    @Html.ValidationMessageFor(model => model.ReceiveName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-4">
+                                <label class="control-label">Số điện thoại</label>
+                                @Html.TextBoxFor(model => model.ReceivePhone, new { @class = "form-control", placeholder = "Số điện thoại..." })
+                                @Html.ValidationMessageFor(model => model.ReceivePhone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        @if (!Request.IsAuthenticated)
+                        {
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="control-label" for="Email">Địa chỉ Email</label>
+                                        @Html.TextBox("Email", null, new { @class = "form-control", Type = "email", placeholder = "Địa chỉ email có thực để nhận thông tin đơn hàng..." })
+                                        @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label">Địa chỉ</label>
+                                    @Html.TextBoxFor(model => model.ReceiveAddress, new { @class = "form-control", placeholder = "Địa chỉ nhận hàng..." })
+                                    @Html.ValidationMessageFor(model => model.ReceiveAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label class="control-label">Tỉnh/Thành phố</label>
+                                @Html.DropDownList("ProvinceId", null, "Chọn Tỉnh thành", htmlAttributes: new { @class = "form-control select2" })
+                                @Html.ValidationMessage("ProvinceId", "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-6">
+                                <label class="control-label">Quận/Huyện</label>
+                                @Html.DropDownList("DistrictId", null, "Chọn Quận huyện", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessage("DistrictId", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chọn nhà vận chuyển -->
+                <h3 class="block-title"><i class="fa fa-truck" aria-hidden="true"></i> CHỌN NHÀ VẬN CHUYỂN</h3>
+                <div id="transport-table" class="block block-white  block-bordered">
+                    <p class="alert alert-info">
+                        Vui lòng chọn Tỉnh thành > Quận huyện để tìm nhà vận chuyển cho bạn.
+                    </p>
+                </div>
+            </div>
+
+            <div id="cart-detail" class="col-md-5">
+                <h3 class="block-title"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> THÔNG TIN ĐƠN HÀNG</h3>
+                <div class="block block-white block-bordered">
+                    <table class="table mycart">
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th class="text-center">Xóa</th>
+                                <th class="text-center">Giá tiền</th>
+                                <th class="text-center">Số lượng</th>
+                                <th class="text-right">Thành tiền</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in ShoppingCart.Cart.Items)
+                            {
+                                <tr class="start-item row-@p.Id" id="row-@p.Id">
+                                    <td rowspan="2"><img src="@p.FeaturedImage" style="width: 52px;" class="img-thumbnail" /></td>
+                                    <td class="action removeProduct text-center">
+                                        <a href="#" class="removeProduct" data-id="@p.Id" onclick="return deleteFromCart(@p.Id);" title="Xóa khỏi giỏ hàng">
+                                            <i class="removeProduct fa fa-close text-danger"></i>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">@Html.FormatValue(p.PriceAfter, "{0:0,0}")<sup>đ</sup></td>
+                                    <td class="text-center">
+                                        <select data-id="@p.Id" name="quantity" class="quantity spquantity">
+                                            @for (int i = 1; i < 10; i++)
+                                            {
+                                                var selected = p.Amount == i ? "selected" : "";
+                                                <option value="@i" @selected>@i</option>
+                                            }
+                                        </select>
+                                    </td>
+                                    <td id="Amount-@p.Id" class="text-right">@Html.FormatValue(p.PriceAfter * p.Amount, "{0:0,0}")<sup>đ</sup></td>
+                                </tr>
+                                <tr class="end-item row-@p.Id">
+                                    <td colspan="4">@p.Name</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th id="couponbox" colspan="2" rowspan="4" style="vertical-align: top;">
+
+                                    <label class="control-label" for="couponcode">Mã giảm giá (nếu có)</label>
+                                    
+                                    <div  class="input-group">
+
+                                        <input type="text" name="couponCode" id="couponCode" class="form-control" value="@ShoppingCart.Cart.CouponCode">
+                                        <span class="input-group-btn">
+                                            <button id="applyCoupon" class="btn btn-danger" type="button">
+                                                Áp dụng <i class="fa fa-angle-right"></i>
+                                            </button>
+                                        </span>
+                                    </div><!-- /input-group -->
+
+                                    <p class="status"></p>
+
+                                </th>
+                                <th colspan="2">Tổng đơn hàng:</th>
+                                <th  class="text-right">
+                                    <span class="nn-cart-total">@Html.FormatValue(ShoppingCart.Cart.Total, "{0:0,0}")đ</span>
+                                </th>
+                            </tr>
+                            <tr class="text-right">
+                                <td colspan="2">Phí vận chuyển:</td>
+                                <td id="orderTransportCost" class="text-right">@Html.FormatValue(ShoppingCart.Cart.TransportCost, "{0:0,0}")đ</td>
+                            </tr>
+                            <tr class="text-right">
+                                <td colspan="2">Giảm giá: <span id="discountDescription">@Html.Raw(ShoppingCart.Cart.discountDescription)</span ></td >
+                                <td id = "orderDiscount" class="text-right">@Html.FormatValue(ShoppingCart.Cart.Discount, "{0:0,0}")đ</td>
+                            </tr>
+                            <tr style = "font-weight: 700; color: orangered" >
+                                <th colspan="2" class="text-right">Tổng thành tiền:</th>
+                                <th class="text-right">
+                                    <span id ="totalOrder" >@Html.FormatValue(ShoppingCart.Cart.OrderTotal, "{0:0,0}")đ</span>
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="form-horizontal">
+                        <div class="actions">
+                            <button class="btn btn-warning btn-checkout" type="submit">
+                                <i class="fa fa-hand-o-right" aria-hidden="true"></i> Đặt Hàng
+                            </button>
+                            <a href = "/" class="btn btn-info">
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm sản phẩm khác
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label">Ghi chú đơn hàng</label>
+                                @Html.TextAreaFor(model => model.Note, new { @class = "form-control unicase-form-control", rows = "3" })
+                                @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>@*/row*@
+    }
+
+
+</div>
+
+@section scripts
+{
+    <script>
+    jQuery(function ($) {
+        $('.btn-toggle').click(function (event) {
+            event.preventDefault();
+            var to = $(this).attr('href');
+            $(to).slideToggle();
+
+            return false;
+        });
+
+        // Hàm Ajax login
+        $("#btnLogin").click(function (e) {
+            e.preventDefault();
+            var data = {
+                Email: $("#UserName").val(),
+                Password: $("#Password").val()
+            };
+
+            var btn = $(this);
+
+            $.ajax({
+                url: '/Account/AjaxLogin',
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+                beforeSend: function () {
+                    btn.find('i.fa').removeClass('fa-sign-in').addClass('fa-spinner fa-pulse fa-fw');
+                },
+                success: function (response) {
+
+                    btn.find('i.fa').addClass('fa-sign-in').removeClass('fa-spinner fa-pulse fa-fw');
+
+                    $('#status').text(response.Message);
+
+                    if (response.Status == 1) {
+                        location.href = "/Order/Checkout";
+                    }
+                },
+                error: function (err) {
+                    alert("Lỗi hệ thống, ấn F5 để refresh lại trình duyệt để tiếp tục.");
+                }
+            });
+        });
+
+        // Hàm Ajax Lấy District
+        $("#ProvinceId").change(function (e) {
+            e.preventDefault();
+            var data = {
+                provinceId: $(this).val(),
+            };
+
+            var btn = $(this);
+
+            $.ajax({
+                url: '/Home/AjaxGetDistrictByProvice',
+                type: 'POST',
+                dataType: 'html',
+                data: data,
+                success: function (html) {
+                    $('#DistrictId').html(html);
+                },
+                complete: function(){
+                    //Lay danh sach nha van chuyen
+                    getTransport();
+                },
+                error: function (err) {
+                    alert("Lỗi hệ thống, ấn F5 để refresh lại trình duyệt để tiếp tục.");
+                }
+            });
+        });
+
+        //Lấy và cập nhật nhà vận chuyển
+        getTransport();
+        $('#DistrictId').change(function (e) {
+            e.preventDefault();
+            getTransport();
+        });
+
+        //Lấy bảng nhà vận chuyển
+        function getTransport() {
+            var districtId = $('#DistrictId').val();
+            //alert(districtId);
+            if (districtId == undefined || districtId == "") return false;
+            //lấy bảng vận chuyển
+            var data = {
+                districtId: districtId,
+            };
+
+            $.ajax({
+                url: '/Order/AjaxGetTransport',
+                type: 'GET',
+                dataType: 'html',
+                data: data,
+                beforeSend: function () {
+                    $("#transport-table").html('<i class="fa-spinner fa-pulse fa-fw"></i>');
+                },
+                success: function (html) {
+                    $("#transport-table").html(html);
+                },
+                complete: function(){
+                    updateOrderSummary();
+                },
+                error: function (err) {
+                    alert("Lỗi hệ thống, ấn F5 để refresh lại trình duyệt để tiếp tục.");
+                }
+            });
+        }
+
+        $("#FormPurchase").change(function () {
+            updateTransport();
+        });
+
+        function updateTransport() {
+            var transportid = $("input[name='TransportId']:checked").val();
+            //alert("TransportId: " + transportid);
+            if (transportid == undefined || transportid == "") return false;
+            //lấy bảng vận chuyển
+            var data = {
+                transportId: transportid,
+            };
+
+            $.ajax({
+                url: '/Order/UpdateTransport',
+                type: 'get',
+                dataType: 'text',
+                data: data,
+                success: function (result) {
+                    //alert(result);
+                },
+                error: function (err) {
+                    
+                }
+            });
+
+            updateOrderSummary();
+        }
+
+        
+
+        $("#applyCoupon").click(function (event) {
+            event.preventDefault();
+
+            var data = {
+                code: $("#couponCode").val(),
+            };
+
+            $.ajax({
+                url: '/Order/UpdateCoupon',
+                type: 'Get',
+                dataType: 'text',
+                data: data,
+                beforeSend: function () {
+                    $("#applyCoupon i.fa").addClass("fa-spinner fa-pulse fa-fw");
+                },
+                success: function (response) {
+                    //alert(response);
+                    $("#applyCoupon i.fa").removeClass("fa-spinner fa-pulse fa-fw");
+
+                    if ($("#couponbox .status").hasClass("alert")) {
+                        $("#couponbox .status").removeClass("alert").removeClass("alert-danger").removeClass("alert-success");
+                    }
+
+                    if (response == "True") {
+                        $("#couponbox .status").text("Nhập mã KM thành công!").addClass('alert alert-success');
+                        updateOrderSummary();
+                    } else {
+                        $("#couponbox .status").text("Nhập mã KM không tồn tại!").addClass('alert alert-danger');
+                    }
+                },
+                error: function (err) {
+                    alert("Lỗi hệ thống, ấn F5 để refresh lại trình duyệt để tiếp tục.");
+                }
+            });
+            
+        });
+
+    });
+    </script>
+
+}
+
+
+
+
+
+

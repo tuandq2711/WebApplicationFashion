@@ -1,0 +1,27 @@
+﻿@using FashionGo.Models.Entities;
+@model IEnumerable<ProductCategory>
+
+
+<ul class="dropdown-menu multi-level">
+    @foreach (var item in Model)
+    {
+        if (item.ParentCategory == null)
+        {
+
+            <li class="dropdown-submenu">
+                <a class="dropdown-toggle" href="/danh-muc/@item.Name.ToAscii()-@item.CatId" style="background: url(@item.Image) 15px center no-repeat; background-size: 20px auto; padding-left: 45px;">@Html.Raw(item.Name)</a>
+
+                @if (item.SubCategories != null && item.SubCategories.Count() > 0)
+                {
+                    <ul class="dropdown-menu">
+                        @foreach (var subcat in item.SubCategories)
+                        {
+                            <li><a href="/danh-muc/@subcat.Name.ToAscii()-@subcat.CatId">@Html.Raw(subcat.Name)</a></li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    }
+</ul>
+

@@ -1,0 +1,114 @@
+﻿@model FashionGo.Models.Entities.Order
+@using FashionGo.Models.Entities
+
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_layout.cshtml";
+}
+
+<div class="box">
+    <h4>Thông tin đơn hàng</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderStatus.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceiveName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transport.District.Province.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transport.Transporter.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transport.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <p class="label label-success">@Model.OrderStatus.Name</p>
+            </td>
+            <td>
+                @Model.ReceiveName
+                <br />
+                @Model.ReceivePhone
+                <br />
+                @Model.User.Email
+            </td>
+            <td>
+                @Model.Transport.District.Province.Name
+            </td>
+
+            <td>
+                <img src="@Model.Transport.Transporter.Logo" alt="@Model.Transport.Transporter.Name" width="32" />
+            </td>
+            <td>
+                @Html.FormatValue(Model.Transport.Cost, "{0:0,0}")
+            </td>
+            <td>
+                @Html.FormatValue(Model.TotalAmount, "{0:0,0}")
+            </td>
+            <td>
+                -@Html.FormatValue(Model.Discount, "{0:0,0}")
+            </td>
+            <td>
+                @Html.FormatValue(Model.TotalOrder, "{0:0,0}")
+            </td>
+            <td>
+                @Model.Note
+            </td>
+            <td>
+                @Model.OrderDate
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10" style="font-weight: bold"><i class="fa fa-map-marker"></i> Địa chỉ: @Model.ReceiveAddress, @Model.Transport.District.Type @Model.Transport.District.Name, @Model.Transport.District.Province.Type @Model.Transport.District.Province.Name</td>
+        </tr>
+    </table>
+</div>
+<h4>Chi tiết đơn hàng:</h4>
+<div class="box">
+    <table class="table table-bordered">
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+        </tr>
+        @foreach (var d in Model.OrderDetails)
+        {
+            var p = d.Product;
+            <tr>
+                <td>@p.Name</td>
+                <td>@Html.FormatValue(p.PriceAfter, "{0:0,0}")<sup>đ</sup></td>
+                <td>@d.Amount</td>
+                <td id="@p.Id">@Html.FormatValue(p.PriceAfter * d.Amount, "{0:0,0}")<sup>đ</sup></td>
+            </tr>
+        }
+        <tr>
+            <th colspan="3" style="text-align:right">Tổng cộng:</th>
+            <th class="nn-cart-total">@Html.FormatValue(Model.TotalAmount, "{0:0,0}")<sup>đ</sup></th>
+        </tr>
+    </table>
+</div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

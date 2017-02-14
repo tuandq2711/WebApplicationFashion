@@ -1,0 +1,44 @@
+﻿@using FashionGo.Models.Entities
+@using Commons.Libs
+
+<div class="t3-module module" id="Mod89">
+    <div class="module-inner">
+        <h3 class="module-title "><span>Giới thiệu</span></h3>
+        <div class="module-ct">
+            <div class="eshop-category">
+                <ul>
+                    @foreach (Menu m in ViewBag.MenuGioiThieu)
+            {
+                        <li>
+                            <a href="@m.Url" title="@Html.Raw(m.Text)">
+                                @Html.Raw(m.Text)
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div><!-- /.sidebar-widget-body -->
+        </div><!-- /.sidebar-widget -->
+    </div>
+</div>
+
+<div class="t3-module module" id="Mod89">
+    <div class="module-inner">
+        <h3 class="module-title "><span>Hướng dẫn-Trợ giúp</span></h3>
+        <div class="module-ct">
+            <div class="eshop-category">
+                <ul>
+                    @foreach (Menu m in ViewBag.MenuTroGiup)
+                    {
+                        <li>
+                            <a href="@m.Url" title="@Html.Raw(m.Text)">
+                                @Html.Raw(m.Text)
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("_DiscountProducts", "Product")

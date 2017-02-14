@@ -1,0 +1,66 @@
+﻿@model FashionGo.Models.Entities.Product
+@{
+    ViewBag.Title = "Sản phẩm yêu thích";
+    Layout = "~/Views/Shared/_ClearLayout.cshtml";
+    var rd = new Random();
+}
+
+<section class="section featured-product wow fadeInUp">
+    <h3 class="page-title">@ViewBag.Title</h3>
+    <div class="row">
+        @foreach (FashionGo.Models.Entities.Product p in ViewBag.WishList)
+        {
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <div class="products">
+                    <div class="product">
+                        <div class="product-image">
+                            <div class="image">
+                                <a href="/san-pham/@p.Name.ToAscii()-@p.Id">
+                                    <img src="@p.FeaturedImage" data-echo="@p.FeaturedImage" alt="" class="imgFull" id="@p.Id">
+                                </a>
+                            </div><!-- /.Image -->
+                            <div class="cart text-center animate-effect">
+                                <div class="action">
+                                    <a class="btn btn-success" href="/san-pham/@p.Name.ToAscii()-@p.Id" title="Xem ngay"><i class="icon fa fa-eye"></i> XEM NGAY</a>
+                                    <a class="btn btn-danger addProduct" href="/Product/RemoveFromWishList/@p.Id" title="Xóa khỏi danh sách yêu thích">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </div><!-- /.action -->
+                            </div><!-- /.cart -->
+
+                        </div><!-- /.product-image -->
+
+                        <div class="product-info">
+                            <div class="info-header">
+                                <h3 class="name"><a href="/san-pham/@p.Name.ToAscii()-@p.Id">@p.Name</a></h3>
+                                @*<div class="rating rateit-small"></div>*@
+                            </div>
+                            <div class="product-price">
+                                <meta itemprop="priceCurrency" content="VND">
+                                <span class="price">
+                                    <span class="price_value" itemprop="price">@Html.FormatValue(p.PriceAfter, "{0:0,0}") <span class="price_symbol">đ</span></span>
+                                    <span class="price_discount">-@p.Discount%</span>
+                                </span>
+                                <div class="price-before-discount"> @Html.FormatValue(p.Price, "{0:0,0}") <span class="price_symbol">đ</span></div>
+                            </div><!-- /.product-price -->
+                            <div class="product_views">
+
+                                <i class="fa fa-user"></i> @rd.Next(p.Views, 100 + p.Views)
+                            </div>
+                        </div><!-- /.product-info -->
+
+
+                        @if (p.EndDate != null)
+                        {
+                            var unixTimestamp = (Int32)(p.EndDate.Value.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                            <div class="countdown">
+                                <i class="fa fa-clock-o"></i> Còn <span data-time="@unixTimestamp" class="kkcountdown"></span>
+                            </div>
+                        }
+                    </div>
+                </div><!-- /.products -->
+            </div>
+        }
+    </div>
+</section><!-- /.section -->
+

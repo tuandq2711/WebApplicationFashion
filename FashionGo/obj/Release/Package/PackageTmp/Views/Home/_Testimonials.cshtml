@@ -1,0 +1,71 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Testimonial>
+<div class="wrap t3-testimonial ">
+    <div class="container">
+        <div id="os-module-testimonial121" class="os-module-testimonial">
+            <div id="osTestimonial121" class="carousel slide osTestimonial" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @{
+                        var stt = 0;
+                        foreach (var item in Model)
+                        {
+                            var activeClass = stt == 0 ? "active" : "";
+
+                            <li data-target="#osTestimonial121" data-slide-to="@stt" class="@activeClass"></li>
+                            stt++;
+                        }
+
+                    }
+                </ol>
+                <div class="carousel-inner">
+                    @{
+                        stt = 0;
+                        foreach (var item in Model)
+                        {
+                            var activeClass = stt == 0 ? "active" : "";
+
+                            <div class="item @activeClass">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12">
+                                        <div class="info">
+                                            <p class="content-testimonial">
+                                                <sup><i class="fa fa-quote-left pull-left"></i></sup>
+                                                <span>@item.Message</span>
+                                                <sub><i class="fa fa-quote-right pull-right"></i></sub>
+                                            </p>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <img class="img-circle img-responsive avatar" src="@item.CustomerAvatar" title="@item.CustomerName">
+                                            </div><div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="name">/ @item.CustomerName /</div>
+                                            <div class="tw-fb"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cleanfix" style="height: 10px"></div>
+                        </div>
+
+                            stt++;
+                        }
+                    }
+
+                </div>
+                <a class="left carousel-control hide" href="#osTestimonial121" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control hide" href="#osTestimonial121" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                var testimonial = jQuery('#osTestimonial121');
+                testimonial.carousel({
+                    wrap: true,
+                    interval: 3000,
+                    pause: 'hover'
+                });
+            });
+        </script>
+    </div>
+</div>

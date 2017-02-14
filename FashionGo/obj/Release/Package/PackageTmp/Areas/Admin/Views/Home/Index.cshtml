@@ -1,0 +1,130 @@
+﻿@model ICollection<FashionGo.Models.Entities.Product>
+@using FashionGo.Models.Entities
+@{
+    ViewBag.Title = "Overview";
+    Layout = "~/Areas/admin/Views/Shared/_layout.cshtml";
+}
+
+<!-- Info boxes -->
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Số sản phẩm</span>
+                <span class="info-box-number">@ViewBag.CountProduct<small>sp</small></span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Đơn hàng</span>
+                <span class="info-box-number">@ViewBag.CountOrder</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    <!-- fix for small devices only -->
+    <div class="clearfix visible-sm-block"></div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-user"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Số khách hàng</span>
+                <span class="info-box-number">@ViewBag.CountUsers</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+    
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">Người dùng</span>
+                <span class="info-box-number">@ViewBag.CountUsers</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+
+<!-- Main row -->
+<div class="row">
+    <!-- Left col -->
+    <div class="col-md-8">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Đơn hàng gần đây</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table no-margin">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Khách hàng</th>
+                                <th>Trạng thái</th>
+                                <th>Số Tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Order order in ViewBag.NewOrders)
+                            {
+                                <tr>
+                                    <td><a href="#">@order.Id</a></td>
+                                    <td>@order.ReceiveName</td>
+                                    <td><span class="label label-success">@order.OrderStatus.Name</span></td>
+                                    <td><div class="sparkbar" data-color="#00a65a" data-height="20">@Html.FormatValue(order.TotalOrder, "{0:0,0}")đ</div></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div><!-- /.table-responsive -->
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Thêm đơn hàng mới</a>
+                <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả</a>
+            </div><!-- /.box-footer -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+
+    <div class="col-md-4">
+        <!-- PRODUCT LIST -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Sản phẩm mới thêm</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <ul class="products-list product-list-in-box">
+                    @foreach (var p in Model)
+                    {
+                        <li class="item">
+                            <div class="product-img">
+                                <img src="@p.FeaturedImage" width="50" alt="@p.Name">
+                            </div>
+                            <div class="product-info">
+                                <a href="javascript::;" class="product-title">@p.ProductCategory.Name <span class="label label-warning pull-right">@Html.FormatValue(@p.PriceAfter, "{0:0,0}")đ</span></a>
+                                <span class="product-description">
+                                    @p.Name
+                                </span>
+                            </div>
+                        </li><!-- /.item -->
+                    }
+                </ul>
+            </div><!-- /.box-body -->
+            <div class="box-footer text-center">
+                <a href="javascript::;" class="uppercase">Xem tất cả sản phẩm</a>
+            </div><!-- /.box-footer -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->

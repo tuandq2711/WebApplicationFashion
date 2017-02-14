@@ -1,0 +1,253 @@
+.eshop-products {
+}
+
+.eshop-products .eshop_product {
+	text-align: center;
+	margin: 0 0 10px;
+}
+
+.eshop-product ul {
+}
+
+.eshop-product ul li {
+	list-style: none;
+	text-align: center;
+}
+.eshop-product .eshop-wrap-product {
+	width: 100%;
+	position: relative;
+	transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+}
+.eshop-product .eshop-wrap-product .product-review {
+	padding: 3px 0 0;
+}
+.eshop-product .eshop-wrap-product .product-review p {
+	margin: 0;
+	line-height: normal;
+}
+.eshop-product .eshop-wrap-product .product-review img {
+	vertical-align: top;
+}
+.eshop-product .eshop-wrap-product div.eshop-image-block .overlay-background-color {
+	display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+	transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+}
+.eshop-product .eshop-wrap-product div.eshop-image-block:hover .overlay-background-color {
+	background: rgba(0, 0, 0, 0.4);
+}
+.eshop-product .eshop-buttons {
+	position: absolute;
+	top: 45%;
+	width: 100%;
+	text-align: center;
+	z-index: 999;
+	opacity: 0;
+	transition: all 0.5s ease 0s;
+	-moz-transition: all 0.5s ease 0s;
+	-webkit-transition: all 0.5s ease 0s;
+}
+.eshop-product .eshop-buttons .eshop-cart-area {
+    display: inline-block;
+    margin: 0 auto 10px;
+}
+.eshop-product .eshop-wrap-product div.eshop-image-block:hover .eshop-buttons {
+	opacity: 1;
+	top: 35%;
+}
+.eshop-product .eshop-buttons .button {
+	color: #fff;
+	font-size: 22px;
+	padding: 0 10px;
+}
+.eshop-product .eshop-buttons .call-for-price {
+	color: #fff;
+    font-size: 20px;
+}
+.eshop-cart-area .btn {
+	float: none;
+}
+
+.slick-dots {
+    bottom: -45px;
+    display: block;
+    list-style: outside none none;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.slick-dots li {
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+    position: relative;
+    width: 20px;
+}
+.slick-dots li button {
+	background: none;
+    border: none;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    font-size: 0;
+    height: 20px;
+    line-height: 0;
+    outline: none;
+    padding: 5px;
+    width: 20px;
+}
+.slick-dots li button:before {
+}
+.slick-dots li.slick-active button:before {
+}
+
+.base-price {
+    color: #ccc;
+    text-decoration: line-through;
+}
+
+.product-infor-block .sale-price, .product-infor-block .price, .product-infor-block .eshop-price {
+    clear: both;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: normal;
+    width: 100%;
+}
+
+/* Latest Product */
+.t3-latest-product .slick-prev,
+.t3-latest-product .slick-next {
+	top: -46px;
+}
+
+
+/* Poppular Products */
+#products-list {
+}
+
+.t3-module #products-list .eshop-image-block {
+}
+
+.t3-module .eshop-info-block {
+	text-align: left;
+}
+.t3-module .eshop-info-block h4 {
+    font-weight: normal;
+	font-size: 16px;
+    margin: 10px 0;
+	text-transform: uppercase;
+}
+.t3-module .eshop-info-block h4 a {
+	color:#333;
+}
+
+#products-list .eshop-image-block .image.img-polaroid {
+	border: none;
+    box-shadow: none;
+    padding: 0;
+    text-align: left;
+}
+
+#products-list .eshop-info-block {
+	padding-left: 0;
+}
+
+.sidebar #products-list .eshop-image {
+	width: 36.667%;
+}
+
+#products-list .eshop-info-block a.link {
+	color: #333;
+	text-transform: uppercase;
+	margin: 0 0 10px;
+	display: block;
+}
+
+#products-list .product-infor-block .eshop-product-desc {
+	margin: 10px 0 0;
+}
+
+/* 
+ * 	Core Owl Carousel CSS File
+ *	v1.3.3
+ */
+
+/* clearfix */
+.owl-carousel .owl-wrapper:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+/* display none until init */
+.owl-carousel{
+	display: none;
+	position: relative;
+	width: 100%;
+	-ms-touch-action: pan-y;
+}
+.owl-carousel .owl-wrapper{
+	display: none;
+	position: relative;
+	-webkit-transform: translate3d(0px, 0px, 0px);
+}
+.owl-carousel .owl-wrapper-outer{
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+.owl-carousel .owl-wrapper-outer.autoHeight{
+	-webkit-transition: height 500ms ease-in-out;
+	-moz-transition: height 500ms ease-in-out;
+	-ms-transition: height 500ms ease-in-out;
+	-o-transition: height 500ms ease-in-out;
+	transition: height 500ms ease-in-out;
+}
+	
+.owl-carousel .owl-item{
+	float: left;
+	padding: 0 15px;
+}
+.owl-controls .owl-page,
+.owl-controls .owl-buttons div{
+	cursor: pointer;
+}
+.owl-controls {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* mouse grab icon */
+.grabbing { 
+    cursor:url(grabbing.html) 8 8, move;
+}
+
+/* fix */
+.owl-carousel  .owl-wrapper,
+.owl-carousel  .owl-item{
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility:    hidden;
+	-ms-backface-visibility:     hidden;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+}

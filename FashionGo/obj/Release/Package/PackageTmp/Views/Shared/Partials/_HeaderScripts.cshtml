@@ -1,0 +1,103 @@
+﻿
+<style type="text/css">
+        #sp-smart-slider.sp-awetive-layout,
+        .sp-awetive-layout .sp-slider-item{
+        height: 630px;
+        }
+
+        @@media (max-width:767px) {
+        #sp-smart-slider.sp-awetive-layout,
+        .sp-awetive-layout .sp-slider-item{
+            height: 400px;
+        }
+        }
+
+        @@media (max-width:480px) {
+            #sp-smart-slider.sp-awetive-layout,
+            .sp-awetive-layout .sp-slider-item{
+                height: 300px;
+            }
+        }
+</style>
+
+<!-- META FOR IOS & HANDHELD -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<style type="text/stylesheet">
+		@@-webkit-viewport   { width: device-width; }
+		@@-moz-viewport      { width: device-width; }
+		@@-ms-viewport       { width: device-width; }
+		@@-o-viewport        { width: device-width; }
+		@@viewport           { width: device-width; }
+</style>
+<script type="text/javascript">
+        //<![CDATA[
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement("style");
+            msViewportStyle.appendChild(
+				document.createTextNode("@@-ms-viewport{width:auto!important}")
+			);
+            document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+        //]]>
+</script>
+<meta name="HandheldFriendly" content="true" />
+<meta name="apple-mobile-web-app-capable" content="YES" />
+<meta name="google-site-verification" content="AXWl3CeEL78aquc0YqmkmI1TOZa3IyvsJhgn0FxwYP0" />
+<!-- //META FOR IOS & HANDHELD -->
+
+
+<script type="text/javascript">
+        jQuery(function ($) {
+            $(':checkbox').each(function () {
+                $(this).after('<label for=""></label>');
+            });
+            $(':radio').each(function () {
+                $(this).after('<label for=""></label>');
+            });
+        });
+</script>
+<script type="text/javascript">
+        /**
+        * Set up sticky nav
+        **/
+        function stickynav() {
+            var window_scroll = jQuery(window).scrollTop();
+            jQuery(window).scroll(function (e) {
+                if (jQuery(window).scrollTop() > 160) {
+                    jQuery('body').addClass('scrolled-nav');
+                } else {
+                    jQuery('body').removeClass('scrolled-nav');
+                }
+            });
+        }
+</script>
+<script type="text/javascript">
+        stickynav();
+</script>
+
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Cabin+Condensed:400,700' rel='stylesheet' type='text/css'>
+
+
+<!-- Le HTML5 shim and media query for IE8 support -->
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script type="text/javascript" src="/fashionpro/plugins/system/t3/base-bs3/js/respond.min.js"></script>
+<![endif]-->
+<!-- You can add Google Analytics here or use T3 Injection feature -->
+
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.7&appId=1640540499593176";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+@if ( ! Request.IsAuthenticated)
+{
+    <script src="/Scripts/modules/mod_bt_login/js/jquery.simplemodal.js"></script>
+    <script src="/Scripts/modules/mod_bt_login/js/default.js"></script>
+}

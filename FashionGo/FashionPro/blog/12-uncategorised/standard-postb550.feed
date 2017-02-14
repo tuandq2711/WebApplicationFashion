@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! - Open Source Content Management" -->
+<feed xmlns="http://www.w3.org/2005/Atom"  xml:lang="en-gb">
+	<title type="text">Blog - EShop Fashion Pro Template</title>
+	<subtitle type="text"></subtitle>
+	<link rel="alternate" type="text/html" href="http://eshoptemplates.com"/>
+	<id>http://eshoptemplates.com/fashionpro/blog/12-uncategorised/standard-post.feed</id>
+	<updated>2016-08-09T04:19:29+00:00</updated>
+	<author>
+		<name>Demo of EShop Fashion Pro Template</name>
+		<email>giangdt@joomdonation.com</email>
+	</author>
+	<generator uri="http://joomla.org">Joomla! - Open Source Content Management</generator>
+	<link rel="self" type="application/atom+xml" href="http://eshoptemplates.com/fashionpro/blog/12-uncategorised/standard-post.feed?type=atom"/>
+</feed>

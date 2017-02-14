@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Product>
+@{ 
+    var rd = new Random();
+}
+<div class="t3-module module " id="Mod101">
+    <div class="module-inner">
+        <h3 class="module-title "><span>Sản phẩm bán chạy</span></h3><div class="module-ct">
+            <div class="eshop-product list">
+                <div id="products-list" class="row clearfix">
+                    <div class="eshop-product-row clearfix">
+                        @foreach (var item in Model)
+                        {
+                            <div class="eshop-boxes col-lg-6 col-xs-12 col-md-6">
+                                <div class="eshop-wrap-grid-boxes clearfix">
+                                    <div class="row">
+                                        <div class="eshop-image image col-xs-3 col-md-3 col-lg-3">
+                                            <div class="image">
+                                                <a href="@Url.RouteUrl("ProductDetails", new { slug = item.Name.ToAscii(), id = item.Id })" title="@item.Name">
+                                                    <img class="image img-responsive" alt="@item.Name" src="@item.FeaturedImage">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-infor-block eshop-info-block col-xs-9 col-md-9 col-lg-9">
+                                            <h4 class="eshop-product-title">
+                                                <a href="@Url.RouteUrl("ProductDetails", new { slug = item.Name.ToAscii(), id = item.Id })" title="@item.Name">
+                                                    @item.Name
+                                                </a>
+                                            </h4>
+                                            
+                                            @if (item.Discount.Value > 0)
+                                            {
+                                                <span class="eshop-base-price">@Html.FormatValue(item.Price, "{0:0,0}")đ</span>
+                                            }
+                                            <span class="eshop-price">@Html.FormatValue(item.PriceAfter, "{0:0,0}")đ</span>
+
+                                            <div class="eshop-product-desc">@item.Description.LimitLength(80, "....")</div>
+
+                                            <div class="product-review">
+                                                <i class="fa fa-tag" aria-hidden="true"></i>@rd.Next(10)
+                                                <i class="fa fa-eye" aria-hidden="true"></i>@item.Views
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                jQuery(document).ready(function ($) {
+                    $(".product-infor-block").css("width", "75%");
+                });
+            </script>
+        </div>
+    </div>
+</div>

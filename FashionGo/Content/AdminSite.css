@@ -1,0 +1,27 @@
+﻿.padding-left-right-10{
+    padding-left:10px;
+    padding-right:10px;
+
+}
+.hide-item {
+  display: none !important;
+}
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+ 
+}
+
+.product-name{
+        font-size: 20px;
+    line-height: 18px;
+ 
+    color: #555;
+    margin-top: 5px;
+}
+.spacing-20{
+    height:20px;
+}
+
+hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #ccc;
+    margin: 1em 0; padding: 0; }

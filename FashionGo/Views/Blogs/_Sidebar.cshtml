@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Post>
+@using FashionGo.Models.Entities
+@using Commons.Libs
+
+<div class="t3-module module" id="Mod130">
+    <div class="module-inner">
+        <h3 class="module-title "><span>Chuyên mục</span></h3>
+        <div class="module-ct">
+            <ul class="categories-module">
+                @foreach (Category c in ViewBag.Cats)
+                {
+                    <li>
+                        <h4>
+                            <a href="@Url.RouteUrl("BlogCategory", new { slug = c.Slug })" title="@Html.Raw(c.Name)">
+                                @Html.Raw(c.Name)
+                            </a>
+                        </h4>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+@Html.Action("_DiscountProducts", "Product")
+
+<div class="t3-module module " id="Mod129">
+    <div class="module-inner">
+        <h3 class="module-title "><span>Tags</span></h3><div class="module-ct">
+            <div class="tagspopular">
+                <ul>
+                    @foreach (Category c in ViewBag.Cats)
+                    {
+                        <li>
+                            <a href="@Url.RouteUrl("BlogCategory", new { slug = c.Slug })" title="@Html.Raw(c.Name)">
+                                @Html.Raw(c.Name)
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

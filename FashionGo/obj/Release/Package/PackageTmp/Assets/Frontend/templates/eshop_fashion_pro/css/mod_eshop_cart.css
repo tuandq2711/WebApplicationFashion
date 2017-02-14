@@ -1,0 +1,128 @@
+#eshop-cart{
+	position: relative;
+	right: 0;
+	top: 0;
+	z-index: 9999;
+	float: right;
+}
+#eshop-cart .eshop-items > a {
+	font-size: 15px;
+    font-weight: bold;
+    line-height: 25px;
+    text-decoration: none;
+	display: inline-block;
+    font-weight: bold;
+    padding: 10px 8px 10px 12px;
+    text-transform: uppercase;
+}
+#eshop-cart .eshop-items a span {
+}
+#eshop-cart #eshop-cart-total {
+	background: #fff;
+	border-radius: 100%;
+    display: inline-block;
+    height: 25px;
+    padding: 0;
+    text-align: center;
+    width: 25px;
+	margin: 0 0 0 12px;
+}
+.eshop-content{
+	background: #fff;
+	clear: both;
+	min-height: 150px;
+	width: 450px;
+	position: absolute;
+	top: 100%;
+	border: 1px #ddd solid;
+	color: #333;
+	right: 0;
+}
+.eshop-content-empty {
+	padding: 10px;
+}
+.eshop-items a:hover{
+	cursor: pointer;
+}
+.eshop-items{
+	z-index: 1;
+}
+.eshop-items h4 {
+	color: #333333;
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 3px;
+	margin-top: 0;
+}
+.eshop-mini-cart-info {
+	padding: 20px 20px 0;
+}
+body .eshop-mini-cart-info .btn {
+	padding: 2px 6px;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: normal;
+}
+.eshop-mini-cart-info td, .mini-cart-total td {
+	border: none;
+	padding: 0 10px;
+}
+body .eshop-mini-cart-info .eshop-table-border {
+	border-bottom: 1px #eee dashed;
+	padding: 0 0 15px;
+	margin: 0 0 15px;
+	border-collapse: inherit;
+}
+body .eshop-mini-cart-info .eshop-table-border:last-child {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+.eshop-mini-cart-info .eshop-image {
+	text-align: left;
+}
+.eshop-mini-cart-info .eshop-name {
+	text-align: left;
+}
+.eshop-mini-cart-info .eshop-name h4 {
+	margin: 0;
+	font-size: 15px;
+	font-weight: bold;
+}
+.eshop-mini-cart-info .eshop-name h4 a {
+	color: #333;
+}
+.eshop-mini-cart-info .eshop-quantity {
+	text-align: right;
+}
+.eshop-mini-cart-info .eshop-image img {
+	text-align: left;
+}
+.eshop-mini-cart-info .eshop-remove {
+	text-align: right;
+}
+.eshop-mini-cart-info .eshop-total {
+	text-align: right;
+}
+.mini-cart-total {
+	border-top: 1px solid #eee;
+	margin: 20px 20px 0;
+	padding: 20px 0;
+	text-align: right;
+}
+.mini-cart-total .eshop-price {
+	font-weight: bold;
+	padding: 0 0 0 15px;
+}
+.eshop-right {
+	text-align: right;
+}
+.eshop-checkout {
+	clear: both;
+	padding: 20px;
+}
+
+.eshop-checkout .btn {
+	font-weight: bold;
+	text-transform: uppercase;
+}

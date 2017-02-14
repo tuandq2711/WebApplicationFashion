@@ -1,0 +1,92 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Order>
+
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_layout.cshtml";
+}
+<div class="box">
+    <table class="table table-bordered table-striped datatable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderStatus.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReceiveName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transport.District.Province.Name)
+                </th>
+                
+                <th>
+                    @Html.DisplayNameFor(model => model.Transport.Transporter.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transport.Cost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Discount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalOrder)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Note)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </th>
+            </tr>
+            </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <p class="label label-success">@Html.DisplayFor(modelItem => item.OrderStatus.Name)</p>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReceiveName) 
+                        <br />
+                        @Html.DisplayFor(modelItem => item.ReceivePhone)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.User.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Transport.District.Province.Name)
+                    </td>
+                    
+                    <td>
+                        <img src="@item.Transport.Transporter.Logo" alt="@item.Transport.Transporter.Name" width="32"/>
+                    </td>
+                    <td>
+                        @Html.FormatValue(item.Transport.Cost, "{0:0,0}")
+                    </td>
+                    <td>
+                        @Html.FormatValue(item.TotalAmount, "{0:0,0}")
+                    </td>
+                    <td>
+                        -@Html.FormatValue(item.Discount, "{0:0,0}")
+                    </td>
+                    <td>
+                        @Html.FormatValue(item.TotalOrder, "{0:0,0}")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Note)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Xem", "Details", new { id = item.Id }, new { @class = "btn btn-xs btn-primary" })
+                        @Html.ActionLink("Sửa", "Edit",  new { id = item.Id }, new { @class = "btn btn-xs btn-warning" })
+                        @Html.ActionLink("Xóa", "Delete",  new { id = item.Id }, new { @class = "btn btn-xs btn-danger", onclick = "return confirm('Bạn có chắc muốn xóa?')" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+</table>
+</div>

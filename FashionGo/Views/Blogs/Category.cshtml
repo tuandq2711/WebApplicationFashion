@@ -1,0 +1,91 @@
+﻿@model PagedList.IPagedList<FashionGo.Models.Entities.Post>
+@using FashionGo.Models.Entities
+@using System.Web.Configuration
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = string.IsNullOrEmpty(ViewBag.Cat.MetaTitle) ? ViewBag.Cat.Name : ViewBag.Cat.MetaTitle;
+    Layout = "~/Views/Shared/_BlogLayout.cshtml";
+}
+
+@section HeaderMetas{
+    <meta name="description" content="@Html.Raw(ViewBag.Cat.MetaDescription)">
+    <meta name="keywords" content="@Html.Raw(ViewBag.Cat.MetaKeyword)">
+    <meta property="og:type" content="Category" />
+    <meta property="og:title" content="@Html.Raw(ViewBag.Cat.MetaTitle)" />
+    <meta property="og:description" content="@Html.Raw(ViewBag.Cat.MetaDescription)" />
+}
+
+<div class="wrap-content">
+    <div class="blog" itemscope="" itemtype="http://schema.org/Blog">
+        <div class="page-header clearfix">
+            <h1 class="page-title"> @ViewBag.Cat.Name</h1>
+        </div>
+        @foreach (var m in Model)
+        {
+            <div class="items-row cols-1 row-0 row">
+                <div class="col-sm-12">
+                    <div class="item column-1" itemprop="blogPost" itemscope="" itemtype="http://schema.org/BlogPosting">
+                        <!-- Article -->
+                        <article>
+                            <header class="article-header clearfix">
+                                <h2 class="article-title" itemprop="name">
+                                    <a href="@Url.RouteUrl("BlogDetails", new { catslug = m.Category.Slug, slug = m.Slug })" itemprop="url" title="@m.Title">
+                                        @m.Title
+                                    </a>
+                                </h2>
+                            </header>
+                            <!-- Aside -->
+                            <aside class="article-aside clearfix">
+                                <dl class="article-info  muted">
+                                    <dt class="article-info-term">
+                                        Chi tiết bài viết
+                                    </dt>
+                                    <dd class="createdby hasTooltip" itemprop="author" itemscope="" itemtype="http://schema.org/Person" title="" data-original-title="Đăng bởi:">
+                                        <span class="">Bởi: </span>
+                                        <span class="brand-primary-color" itemprop="name">FG</span> /
+                                    </dd>
+                                    <dd class="create text-muted hidden">
+                                        <time datetime="@m.createDate" itemprop="dateCreated">
+                                            <div class="blogDate">
+                                                <span class="post-day brand-primary-color">@m.createDate.Value.ToString("dd")-</span>
+                                                <span class="post-month">@m.createDate.Value.ToString("M")-</span>
+                                                <span class="post-year brand-primary-color">@m.createDate.Value.ToString("yyyy")</span>
+                                            </div>
+                                        </time>
+                                    </dd>
+                                    <dd class="category-name hasTooltip" title="" data-original-title="Chuyên mục: ">
+                                        <span class="">Chuyên mục</span>
+                                        <a href="@Url.RouteUrl("BlogCategory", new { slug = m.Category.Slug })" title="@m.Category.Name"><span itemprop="genre">@m.Category.Name</span></a>
+                                    </dd>
+                                </dl>
+                            </aside>
+                            <!-- //Aside -->
+                            <section class="article-intro clearfix" itemprop="articleBody">
+                                <div class="pull-none item-image">
+                                    <img src="@m.Image" alt="@m.Title" itemprop="thumbnailUrl">
+                                </div>
+                                <p>@Html.Raw(m.Content.Remove_Html_Tags().LimitLength(180, "..."))</p>
+                            </section>
+                            <!-- footer -->
+                            <section class="readmore">
+                                <a class="btn btn-primary" href="@Url.RouteUrl("BlogDetails", new { catslug = m.Category.Slug, slug = m.Slug })">
+                                    <span>
+                                        Đọc thêm ...
+                                    </span>
+                                </a>
+                            </section>
+                        </article>
+                        <!-- //Article -->
+                    </div><!-- end item -->
+                </div><!-- end span -->
+            </div><!-- end row -->
+        }
+
+        <div class="pagination-wrap">
+            @Html.PagedListPager(Model, page => Url.HttpRouteUrl("Blog", new { page = page }))
+        </div>
+    </div>
+
+</div>
+

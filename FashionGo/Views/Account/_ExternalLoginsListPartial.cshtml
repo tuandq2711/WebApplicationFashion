@@ -1,0 +1,31 @@
+﻿@using Microsoft.Owin.Security
+@model FashionGo.Models.ExternalLoginListViewModel
+
+<div class="row">
+    <label class="col-md-3 control-label text-right" for="">Đăng nhập bằng</label>
+    <div class="col-md-9">
+        @{
+            var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+            if (loginProviders.Count() == 0)
+            {
+                <div class="social-auth-links text-center">
+                    There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                    for details on setting up this ASP.NET application to support logging in via external services.
+                </div><!-- /.social-auth-links -->
+            }
+            else
+            {
+                using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    foreach (AuthenticationDescription p in loginProviders)
+                    {
+                        <button type="submit" class="btn btn-social btn-@p.Caption.ToLower() btn-flat" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Đăng nhập bằng tài khoản @p.Caption"><i class="fa fa-@p.Caption.ToLower()"></i> @p.AuthenticationType</button>
+                    }
+                    <!-- /.social-auth-links -->
+                }
+            }
+        }
+    </div>
+</div>

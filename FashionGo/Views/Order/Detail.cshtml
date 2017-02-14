@@ -1,0 +1,100 @@
+﻿@model FashionGo.Models.Entities.Order
+@using FashionGo.Models.Entities
+
+@{
+    ViewBag.Title = "Thông tin đơn hàng!";
+    Layout = "~/Views/Shared/_ClearLayout.cshtml";
+}
+
+<div class="eshop-checkout-page">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="page-header clearfix">
+                <h1 class="page-title">Thông tin khách hàng</h1>
+            </div>
+            
+            <table class="table table-hover">
+                <tr>
+                    <td>Tên Người nhận: @Model.ReceiveName</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại: @Model.ReceivePhone</td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ nhận: @Model.ReceiveAddress</td>
+                </tr>
+                <tr>
+                    <td>Ngày đặt hàng: @Html.FormatValue(Model.OrderDate, "{0:dd/MM/yyyy}")</td>
+                </tr>
+                <tr>
+                    <td>Tổng tiền: @Html.FormatValue(Model.TotalOrder, "{0:0,0}")<sup>đ</sup></td>
+                </tr>
+                <tr>
+                    <td>Ghi chú: @Model.Note</td>
+                </tr>
+                <tr>
+                    <td>Nhà vận chuyển: @Model.Transport.Transporter.Name</td>
+                </tr>
+                <tr>
+                    <td>Thời gian vận chuyển (dự tính): @Model.Transport.TransportTime (ngày)</td>
+                </tr>
+            </table>
+            <hr />
+            <p class="left-right">
+                <a href="/" class="btn btn-success">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i> Về trang chủ
+                </a>
+            </p>
+        </div>
+        <div id="cart-detail" class="col-md-8">
+            <div class="page-header clearfix">
+                <h1 class="page-title">Chi tiết đơn hàng</h1>
+            </div>
+            
+            <table class="table mycart">
+                <thead>
+                    <tr>
+                        <th colspan="2">Sản phẩm</th>
+                        <th>Đơn giá</th>
+                        <th>Số lượng</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.OrderDetails)
+                    {
+                        <tr>
+                            <td><img src="@item.Product.FeaturedImage" style="width: 52px;" class="img-thumbnail" /></td>
+                            <td>@item.Product.Name</td>
+                            <td>@Html.FormatValue(item.PriceAfter, "{0:0,0}")<sup>đ</sup></td>
+                            <td>@item.Amount</td>
+                            <td>@Html.FormatValue(item.PriceAfter * item.Amount, "{0:0,0}")<sup>đ</sup></td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4" class="text-right">Tổng giá sp:</th>
+                        <th class="text-right">
+                            <span class="nn-cart-total">@Html.FormatValue(Model.TotalAmount, "{0:0,0}")đ</span>
+                        </th>
+                    </tr>
+                    <tr class="text-right">
+                        <td colspan="4">Phí vận chuyển:</td>
+                        <td id="orderTransportCost" class="text-right">@Html.FormatValue(Model.Transport.Cost, "{0:0,0}")đ</td>
+                    </tr>
+                    <tr class="text-right">
+                        <td colspan="4">Giảm giá:</td>
+                        <td id="orderDiscount" class="text-right">-@Html.FormatValue(Model.Discount, "{0:0,0}")đ</td>
+                    </tr>
+                    <tr style="font-weight: 700; color: orangered">
+                        <td colspan="4" class="text-right">Tổng đơn hàng:</td>
+                        <th class="text-right">
+                            <span id="totalOrder"> @Html.FormatValue(Model.TotalOrder, "{0:0,0}")đ</span>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

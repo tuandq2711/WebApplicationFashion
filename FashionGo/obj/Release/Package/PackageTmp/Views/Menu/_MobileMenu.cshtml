@@ -1,0 +1,8 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Menu>
+
+<ul class="nav nav-pills  nav-stacked">
+    @foreach (var item in Model)
+    {
+        <li class="item-@item.Id"><a href="@item.Url" title="@item.Text" target="@item.Target">@item.Text</a></li>
+    }
+</ul>

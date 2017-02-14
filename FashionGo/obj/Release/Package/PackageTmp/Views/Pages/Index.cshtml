@@ -1,0 +1,26 @@
+﻿@model FashionGo.Models.Entities.Page
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_PageLayout.cshtml";
+}
+<div class="item-page clearfix">
+    <!-- Article -->
+    <article itemscope="" itemtype="http://schema.org/Article">
+        <meta itemprop="inLanguage" content="vi-VN">
+        <header class="article-header clearfix">
+            <h1 class="article-title" itemprop="name">
+                <a href="#" itemprop="url" title="@Model.Title">
+                    @Model.Title
+                </a>
+            </h1>
+        </header>
+        <section class="article-content clearfix" itemprop="articleBody">
+            @Html.Raw(Model.Content)
+        </section>
+        <!-- footer -->
+        <!-- //footer -->
+    </article>
+    <!-- //Article -->
+</div>
+

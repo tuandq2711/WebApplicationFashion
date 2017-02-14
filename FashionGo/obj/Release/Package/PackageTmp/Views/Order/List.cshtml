@@ -1,0 +1,44 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Order>
+    @using FashionGo.Models.Entities
+@{
+    ViewBag.Title = "Danh sách đơn hàng";
+    Layout = "~/Views/Shared/_ClearLayout.cshtml";
+}
+
+<h2 class="page-title">Danh sách đơn hàng của bạn</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Mã đơn hàng</th>
+            <th>Trạng thái</th>
+            <th>Ngày đặt</th>
+            <th>Sản phẩm</th>
+            <th>Tổng cộng</th>
+            <th>Nhà vận chuyển</th>
+            <th>Giảm giá</th>
+            <th>Tổng tiền thanh toán</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>#@m.Id</td>
+                <td>@m.OrderStatus.Name</td>
+                <td>@m.OrderDate</td>
+                <td>
+                    @foreach (OrderDetail d  in m.OrderDetails)
+                    {
+                        <p>@d.Product.Name <span style="color:red">(@Html.FormatValue(d.PriceAfter, "{0:0,0}")<sup>đ</sup> x @d.Amount)</span></p>
+                    }
+                </td>
+                <td>@Html.FormatValue(m.TotalAmount, "{0:0,0}")<sup>đ</sup></td>
+                <td>@m.Transport.Transporter.Name (@Html.FormatValue(m.Transport.Cost, "{0:0,0}")<sup>đ</sup>)</td>
+                <td>-@Html.FormatValue(m.Discount, "{0:0,0}")<sup>đ</sup></td>
+                <td style="color: orangered">@Html.FormatValue(m.TotalOrder, "{0:0,0}")<sup>đ</sup></td>
+            </tr>
+        }
+    </tbody>
+    
+</table>

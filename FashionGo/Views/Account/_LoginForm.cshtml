@@ -1,0 +1,101 @@
+﻿<div class="t3-module module" id="Mod138">
+    <div class="module-inner">
+        <div class="module-ct">
+            <div id="btl">
+                <!-- Panel top -->
+                <div class="btl-panel">
+                    <!-- Login button -->
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                                <span id="btl-panel-login" class="btl-modal"><i class="fa fa-lock"></i> Đăng nhập</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Registration button -->
+                </div>
+                <!-- content dropdown/modal box -->
+                <div id="btl-content">
+
+                    <!-- Form login -->
+                    <div id="btl-content-login" class="btl-content-block">
+                        <!-- if not integrated any component -->
+                        <form name="btl-formlogin" class="btl-formlogin" action="/fashionpro/" method="post">
+                            <div id="btl-login-in-process"></div>
+                            <h3 class="brand-primary-bg"><i class="fa fa-unlock-alt"></i> Đăng nhập</h3>
+                            <div class="spacer"></div>
+                            <div class="btl-error" id="btl-login-error"></div>
+                            <div class="btl-field">
+                                <div class="btl-label">Tên đăng nhập *</div>
+                                <div class="btl-input">
+                                    <input id="btl-input-username" type="text" name="username" placeholder="Email hoặc số điện thoại" />
+                                </div>
+                            </div>
+                            <div class="btl-field">
+                                <div class="btl-label">Mật khẩu *</div>
+                                <div class="btl-input">
+                                    <input id="btl-input-password" type="password" name="password" placeholder="Mật khẩu" />
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="btl-field">
+                                <div id="btl-input-remember">
+                                    <label class="checkbox">
+                                        <input id="btl-checkbox-remember" type="checkbox" name="remember" value="yes" />
+                                        Ghi nhớ đăng nhập
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="btl-buttonsubmit">
+                                <input type="submit" name="Submit" class="btn btn-primary btl-buttonsubmit" onclick="return loginAjax()" value="Đăng nhập" />
+                                <input type="hidden" name="option" value="com_users" />
+                                <input type="hidden" name="task" value="account.ajaxlogin" />
+                                <input type="hidden" name="return" id="btl-return" value="aW5kZXgucGhwP0l0ZW1pZD0xMDc=" />
+                                <input type="hidden" name="bf28e4955cb7669ce584b5936f7a47c1" value="1" />
+                            </div>
+                        </form>
+                        <ul id="bt_ul" class="list-unstyled">
+                            <li>
+                                <a href="@Url.RouteUrl("AccountRegister")" title="Đăng ký tài khoản">
+                                    Bạn chưa có tài khoản?
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.RouteUrl("ForgotPassword")" title="Lấy lại mật khẩu">
+                                    Quên mật khẩu đăng nhập?
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- if integrated with one component -->
+                    </div>
+
+                    <script type="text/javascript">
+                                            /*<![CDATA[*/
+                                            var btlOpt =
+                                            {
+	                                            BT_AJAX					:'@Url.Action("AjaxLogin", "Account")',
+                                                BT_RETURN               :'@Url.Action("Index","Account")',
+                                                RECAPTCHA               :'none',
+                                                LOGIN_TAGS              :'',
+                                                REGISTER_TAGS           :'',
+                                                EFFECT                  :'btl-modal',
+                                                ALIGN                   :'right',
+                                                BG_COLOR                :'#6d850a',
+                                                MOUSE_EVENT             :'click',
+                                                TEXT_COLOR              :'#fff'
+                                            }
+
+                                            if(btlOpt.ALIGN == "center"){
+                                                BTLJ(".btl-panel").css('textAlign','center');
+                                            }else{
+                                                BTLJ(".btl-panel").css('float', btlOpt.ALIGN);
+                                            }
+                                         /*]]>*/
+                    </script>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>

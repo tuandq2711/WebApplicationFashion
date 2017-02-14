@@ -1,0 +1,108 @@
+﻿@using FashionGo.Models.Entities
+@using FashionGo.Models
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "Giỏ hàng của bạn";
+    Layout = "~/Views/Shared/_ClearLayout.cshtml";
+}
+
+<div class="eshop-shopping-cart">
+    <div class="page-header clearfix">
+        <h1 class="page-title">
+            @ViewBag.Title
+        </h1>
+    </div>
+    <table class="table table-bordered">
+        <tr>
+            <th>ẢNH</th>
+            <th>SẢN PHẨM</th>
+            <th>GIÁ BÁN</th>
+            <th>SỐ LƯỢNG</th>
+            <th>THÀNH TIỀN</th>
+        </tr>
+        @foreach (Product p in Model)
+        {
+            <tr id="row-@p.Id">
+                <td class="muted eshop-center-text">
+                    <img src="@p.FeaturedImage" style="width: 52px; height: auto;" />
+                </td>
+                <td>
+                    <h4 class="eshop-product-title">
+                        <a href="@Url.RouteUrl("ProductDetails", new { id = p.Id, slug = p.Name.ToAscii() })" target="_blank">
+                            @p.Name
+                        </a>
+                    </h4>
+
+                </td>
+                <td>
+                    @Html.FormatValue(p.Price, "{0:0,0}")<sup>đ</sup>
+                </td>
+                <td>
+                    <input type="number" min="1" class="input-mini quantity" value="@p.Amount" name="quantity[@p.Id]" data-id="@p.Id" id="quantity_@p.Id">
+                    <a class="eshop-remove-item-cart btn text-danger" href="#" data-id="@p.Id" onclick="return deleteFromCart(@p.Id);" title="Xóa khỏi giỏ hàng">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </td>
+                <td>
+                    <span id="Amount-@p.Id">
+                        @Html.FormatValue(p.Price * p.Amount, "{0:0,0}")
+                    </span><sup>đ</sup>
+                </td>
+            </tr>
+        }
+        <tr>
+            <th colspan="4" style="text-align:right">Tổng cộng:</th>
+            <th>
+                <strong><span class="brand-primary-color nn-cart-total">@Html.FormatValue(ShoppingCart.Cart.Total, "{0:0,0}")</span><sup>đ</sup></strong>
+            </th>
+        </tr>
+    </table>
+    
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>
+                            <label for="coupon_code" class="control-label"><strong>Nhập mã Coupon: </strong></label>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                <div class="controls">
+                                    <input type="text" id="coupon_code" name="coupon_code" class="input-large" value="">
+                                    <button type="button" class="btn btn-small btn-danger" onclick="applyCoupon();">Kiểm tra</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="eshop-cart-checkout">
+        
+        <form action="/Cart/Clear" method="post">
+            <a href="@Url.RouteUrl("Home")" class="btn btn-success pull-left">
+                <i class="fa fa-shopping-bag"></i> THÊM SẢN PHẨM KHÁC
+            </a>
+            <a href="@Url.RouteUrl("Checkout")" class="btn btn-primary pull-right">
+                <i class="fa fa-cart-arrow-down"></i> Đặt Hàng
+            </a>
+            <button class="btn btn-default pull-right" onclick="return confirm('Xác nhận bạn muốn xóa giỏ hàng?');">
+                <i class="fa fa-trash"></i> Xóa giỏ hàng
+            </button>
+        </form>
+    </div>
+    
+</div>
+
+
+
+    
+    
+

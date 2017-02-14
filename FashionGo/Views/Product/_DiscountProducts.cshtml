@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Product>
+
+<div class="t3-module modul" id="Mod102">
+    <div class="module-inner">
+        <h3 class="module-title "><span>Khuyến Mãi</span></h3>
+        <div class="module-ct">
+            <div class="eshop-product">
+                <div class="top-seller-image-product">
+                    @foreach (var item in Model)
+                    {
+                        <div id="wap-product" class="image" style="width: 100%">
+                            <a href="@Url.RouteUrl("ProductDetails", new { slug = item.Name.ToAscii(), id = item.Id })" title="@item.Name">
+                                <img class="image img-responsive" alt="@item.Name" src="@item.FeaturedImage">
+                            </a>
+                            <div class="clear"></div>
+                            <div class="product-infor">
+                                <h3>
+                                    <a href="@Url.RouteUrl("ProductDetails", new { slug = item.Name.ToAscii(), id = item.Id })" data-original-title="@item.Name">
+                                        @item.Name
+                                    </a>
+                                </h3>
+                                <div class="clear"></div>
+                                <p class="eshop-product-desc">@item.Description.LimitLength(55, "....")</p>
+                                <div class="clear"></div>
+                                <span class="price">@Html.FormatValue(item.Price, "{0:0,0}")đ</span>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <script type="text/javascript">
+                    jQuery(document).ready(function ($) {
+                        $('.top-seller-image-product').slick({
+                            arrows: false,
+                            dots: true,
+                            slidesToShow: 1,
+                        });
+                    });
+            </script>
+        </div>
+    </div>
+</div>

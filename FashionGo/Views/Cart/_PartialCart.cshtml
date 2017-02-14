@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Product>
+@using FashionGo.Models
+
+@if (!Model.Any())
+{
+    <div class="eshop-content-empty">
+        Bạn chưa có sản phẩm nào trong giỏ!
+    </div>
+}
+else
+{
+    <div class="eshop-mini-cart-info">
+        <span class="wait"></span>
+        <table class="eshop-table-border" cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="eshop-image" width="25%">
+                            <h4 class="eshop-product-title">
+                                <a href="@Url.RouteUrl("ProductDetails", new { id = item.Id, slug = item.Name.ToAscii() })">
+                                    <img src="@item.FeaturedImage.Replace("uploads/", "uploads/_thumbs/")" style="width: 36px;" />
+                                </a>
+                            </h4>
+                        </td>
+                        <td class="eshop-name" width="45%">
+                            <a href="@Url.RouteUrl("ProductDetails", new { id = item.Id, slug = item.Name.ToAscii() })">
+                                @item.Name
+                            </a>
+                        </td>
+                        <td class="eshop-quantity">
+                            @item.Amount&nbsp;x
+                        </td>
+                        <td class="eshop-total">
+                            @Html.FormatValue(item.PriceAfter, "{0:0,0}")đ
+                        </td>
+                        <td class="eshop-remove">
+                            <a class="btn eshop-remove-item" href="#" data-id="@item.Id" onclick="return deleteFromCart(@item.Id);">
+                                <i class="fa fa-times"><span class="text-hide">Xóa</span></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="mini-cart-total clearfix">
+        <table cellpadding="0" cellspacing="0" align="right">
+            <tbody>
+                <tr>
+                    <td class="eshop-right"><strong>Tổng cộng:&nbsp;</strong></td>
+                    <td class="eshop-left"><span class="eshop-price">@Html.FormatValue(ShoppingCart.Cart.Total, "{0:0,0}")đ</span></td>
+                </tr>
+                <tr>
+                    <td class="eshop-right"><strong>Tông thanh toán:&nbsp;</strong></td>
+                    <td class="eshop-left"><span class="eshop-price">@Html.FormatValue(ShoppingCart.Cart.OrderTotal, "{0:0,0}")đ</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="eshop-checkout clearfix">
+        <a class="btn btn-default pull-left" href="@Url.RouteUrl("ShopingCart")">Xem giỏ hàng</a>
+        <a href="@Url.RouteUrl("Checkout")" class="btn btn-primary pull-right"><i class="fa fa-cart-arrow-down"></i> Đặt Hàng</a>
+    </div>
+    
+}

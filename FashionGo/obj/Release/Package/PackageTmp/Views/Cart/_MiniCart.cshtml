@@ -1,0 +1,32 @@
+﻿@using FashionGo.Models
+<div class="t3-module module " id="Mod88">
+    <div class="module-inner">
+        <div class="module-ct">
+            <div id="eshop-cart" class="eshop-cart">
+                <div class="eshop-items">
+                    <a>
+                        <i class="fa fa-shopping-cart">&nbsp;</i>
+                        <span>Xem Giỏ hàng</span>
+                        <span id="eshop-cart-total">@ShoppingCart.Cart.Count</span>
+                    </a>
+                </div>
+                <div class="eshop-content" id="cart-item" style="display: none;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+	jQuery(function($) {
+		$(document).ready(function() {
+			$('.eshop-items a').click(function() {
+				$('.eshop-content').slideToggle('fast');
+			});
+			$('.eshop-content').mouseleave(function() {
+				$('.eshop-content').hide();
+			});
+		    
+		});
+	});
+</script>

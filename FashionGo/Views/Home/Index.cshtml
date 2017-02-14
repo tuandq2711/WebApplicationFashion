@@ -1,0 +1,69 @@
+﻿@using FashionGo.Models.Entities
+@using FashionGo.Models.Dao
+@using System.Web.Configuration
+
+@model IEnumerable<FashionGo.Models.Entities.ProductCategory>
+
+@{
+
+    ViewBag.Title = Html.Raw(WebConfigurationManager.AppSettings["SiteName"].ToString() + " - " +  WebConfigurationManager.AppSettings["SiteSlogan"].ToString());
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+
+    Random rd = new Random();
+}
+
+@section HeaderMetas{
+    <meta name="description" content="@Html.Raw(WebConfigurationManager.AppSettings["Description"].ToString())">
+    <meta name="keywords" content="@Html.Raw(WebConfigurationManager.AppSettings["Keywords"].ToString())">
+    <meta name="author" content="@Html.Raw(WebConfigurationManager.AppSettings["SiteName"].ToString())">
+
+    <meta property="og:url" content="@Request.Url" />
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:description" content="@Html.Raw(WebConfigurationManager.AppSettings["Description"].ToString())" />
+}
+
+<!-- Wellcome block -->
+@Html.Action("_AboutUs", "Home")
+
+<!-- featured-product -->
+@Html.Action("_FeaturedProducts", "Product")
+<!-- //featured-product -->
+
+
+<!-- SPOTLIGHT 1 -->
+@Html.Action("_HomeBanner", "BannerAds")
+<!-- //SPOTLIGHT 1 -->
+
+
+<!-- latest-product -->
+@Html.Action("_LastestProducts", "Product")
+<!-- //latest-product -->
+<!-- testimonial -->
+@Html.Action("_Testimonials")
+<!-- //testimonial -->
+<!-- shop-by-cat -->
+@Html.Action("_AllShopCategory", "Home")
+<!-- //shop-by-cat -->
+<!-- shipping -->
+@Html.Action("_TosWidget", "Home")
+<!-- //shipping -->
+<!-- eshop-products -->
+<div class="container t3-sl eshop-products">
+    <!-- SPOTLIGHT -->
+    <div class="t3-spotlight t3-eshop-products  row">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            @Html.Action("_BestSalerProducts", "Product")
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            @Html.Action("_DiscountProducts", "Product")
+        </div>
+    </div>
+    <!-- SPOTLIGHT -->
+</div>
+<!-- //eshop-products -->
+<!-- container -->
+@Html.Action("_Manufactures", "Brand")
+<!-- //container -->
+<!-- blog -->
+@Html.Action("_LastNews", "Blogs")
+<!-- //blog -->

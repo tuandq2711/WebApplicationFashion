@@ -1,0 +1,19 @@
+﻿@using FashionGo.Models.Entities;
+@model IEnumerable<Manufact>
+<!-- ============================================== BRANDS CAROUSEL ============================================== -->
+<div id="brands-carousel" class="logo-slider wow fadeInUp">
+    <h3 class="section-title">OurBrand</h3>
+    <div class="logo-slider-inner">
+        <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
+            @foreach (var m in Model)
+            {
+                <div class="item m-tb-10">
+                    <a href="/Product/ListBySpecial/@m.Id/@m.Name" class="image">
+                        <img data-echo="@m.Logo" src="@m.Logo" alt="" width="120" height="90">
+                    </a>
+                </div><!--/.item-->
+            }
+        </div><!-- /.owl-carousel #logo-slider -->
+    </div><!-- /.Logo-slider-inner -->
+</div><!-- /.Logo-slider -->
+<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Transport>
+
+
+@if (Model.Count() > 0)
+{
+    var count = 0;
+    <table class="transport-table table table-hover">
+        <thead>
+            <tr>
+                <th>Chọn</th>
+                <th>Nhà vận chuyển</th>
+                <th class="text-center">Thời gian trung bình</th>
+                <th class="text-right">Phí vận chuyển</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @{ 
+                            var check = count == 0 ? "checked" : "";
+                            count++;
+                        }
+                        <input type="radio" id="transporter-@item.Id" name="TransportId" value="@item.Id" @check/>
+                    </td>
+                    <td><label for="transporter-@item.Id">@item.Transporter.Name</label></td>
+                    <td class="text-center">@item.TransportTime ngày</td>
+                    <td class="text-right">@Html.FormatValue(item.Cost, "{0:0,0}") đ</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.ValidationMessage("TransportId", null, new { @class = "text-danger" })
+}
+else
+{
+    <p class="alert alert-warning">
+        Chưa có nhà vận chuyển nào tới khu vực này, Vui lòng liên hệ hotline: 0901.002822 - 0965.002822 để được hỗ trợ.
+    </p>
+}
+
+

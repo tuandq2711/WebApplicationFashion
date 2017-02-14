@@ -1,0 +1,11 @@
+#currency a {
+    margin-right: 2px;
+    padding: 3px 6px;
+    text-decoration: none;
+	cursor: pointer;
+	font-weight: bold;
+	display: inline-block;
+}
+#currency a b {
+    text-decoration: none;
+}

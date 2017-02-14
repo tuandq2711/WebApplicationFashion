@@ -1,0 +1,91 @@
+﻿<div class="t3-module module " id="Mod93">
+    <div class="module-inner">
+        <div class="module-ct">
+            <div class="eshop-search">
+                <form id="HeaderSearchForm" action="@Url.RouteUrl("SearchProduct")" method="get">
+                    <div class="input-prepend input-append input-group">
+                        <input class="inputbox product_search" type="text" name="keyword" id="prependedInput" value="" placeholder="Tìm sản phẩm...">
+                        <div class="add-on input-group-addon">
+                            <button type="submit" class="btn btn-link"><i class="icon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+                @*<ul id="eshop_result"></ul>*@
+                <input type="hidden" name="live_site" id="live_site" value="http://fashiongo.vn/">
+                <input type="hidden" name="image_width" id="image_width" value="80">
+                <input type="hidden" name="image_height" id="image_height" value="107">
+                <input type="hidden" name="category_ids" id="category_ids" value="">
+                <input type="hidden" name="description_max_chars" id="description_max_chars" value="50">
+            </div>
+            @*<script type="text/javascript">
+                (function ($) {
+                    $(document).ready(function () {
+                        $('.inputbox').attr('autocomplete', 'off');
+                        $('#eshop_result').hide();
+                        $('input.product_search').val('');
+                        $('#eshop_result').mouseleave(function () {
+                            $('#eshop_result').slideUp('slow');
+                        });
+                        function search() {
+                            var query_value = $('input.product_search').val();
+                            $('b#search-string').html(query_value);
+                            if (query_value !== '') {
+                                $('.product_search').addClass('eshop-loadding');
+                                $.ajax({
+                                    type: "POST",
+                                    url: $('#live_site').val() + "index.php?option=com_eshop&view=search&format=raw&layout=ajax",
+                                    data: '&keyword=' + query_value + '&image_width=' + $('#image_width').val() + '&image_height=' + $('#image_height').val() + '&category_ids=' + $('#category_ids').val() + '&description_max_chars=' + $('#description_max_chars').val(),
+                                    cache: false,
+                                    success: function (html) {
+                                        $("ul#eshop_result").html(html);
+                                        $('.product_search').removeClass('eshop-loadding');
+                                    }
+                                });
+                            } return false;
+                        }
+
+                        $("input.product_search").live("keyup", function (e) {
+                            //Set Timeout
+                            clearTimeout($.data(this, 'timer'));
+                            // Set Search String
+                            var search_string = $(this).val();
+                            // Do Search
+                            if (search_string == '') {
+                                $('.product_search').removeClass('eshop-loadding');
+                                $("ul#eshop_result").slideUp();
+                            } else {
+                                $("ul#eshop_result").slideDown('slow');
+                                $(this).data('timer', setTimeout(search, 100));
+                            };
+                        });
+
+                    });
+                })(jQuery);
+            </script>*@
+
+            <style>
+                #eshop_result {
+                    background-color: #ffffff;
+                    width: 470px;
+                    position: absolute;
+                    z-index: 9999;
+                }
+
+                .input-group-addon > .btn{
+                    margin: 0 !important;
+                    padding: 0 !important;
+                }
+
+                .t3-header .t3-eshop-header2 .eshop-search .add-on {
+                    border-radius: 0px !important;
+                    background: #f2533d;
+                    border: none;
+                    padding: 11px 12px 12px;
+                    height: auto;
+                    width: 50px;
+                }
+            </style>
+        </div>
+    </div>
+</div>
+

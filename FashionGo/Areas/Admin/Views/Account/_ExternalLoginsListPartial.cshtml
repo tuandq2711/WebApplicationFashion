@@ -1,0 +1,26 @@
+﻿@model FashionGo.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0)
+    {
+        <div class="social-auth-links text-center">
+            There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+            for details on setting up this ASP.NET application to support logging in via external services.
+        </div><!-- /.social-auth-links -->
+    }
+    else
+    {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+            <div class="social-auth-links text-center">
+                @foreach (AuthenticationDescription p in loginProviders)
+                {
+                    <button type="submit" class="btn btn-block btn-social btn-@p.Caption.ToLower() btn-flat" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account"><i class="fa fa-@p.Caption.ToLower()"></i> @p.AuthenticationType</button>
+                }
+            </div>
+            <!-- /.social-auth-links -->
+        }
+    }
+}

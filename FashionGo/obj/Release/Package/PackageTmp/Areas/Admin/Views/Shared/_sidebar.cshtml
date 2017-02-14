@@ -1,0 +1,112 @@
+﻿<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                @Html.GravatarImage(User.Identity.Name, new GravatarOptions { Size = 48, DefaultImageType = "wavatar", CssClass = "img-circle" })
+                <span class="hidden-xs">@User.Identity.Name</span>
+            </div>
+            <div class="pull-left info">
+                <p>@User.Identity.Name</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="header">THIẾT LẬP - QUẢN LÝ</li>
+            <li class="treeview active">
+                <a href="@Url.Action("Index","Home")">
+                    <i class="fa fa-dashboard">
+                    </i> <span>TỔNG QUAN</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span>Đơn hàng</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Orders")"><i class="fa fa-circle-o"></i> Danh sách đơn hàng</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-text-o"></i> <span>Quản lý sản phẩm</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="active"><a href="@Url.Action("Create", "Products")"><i class="fa fa-plus-o"></i> Thêm mới</a></li>
+                    <li><a href="@Url.Action("Index", "Products")"><i class="fa fa-circle-o"></i> Sản phẩm</a></li>
+                    <li><a href="@Url.Action("Index", "ProductCategories")"><i class="fa fa-circle-o"></i> Danh mục</a></li>
+                    <li><a href="@Url.Action("Index", "ProductTypes")"><i class="fa fa-circle-o"></i> Kiểu sản phẩm</a></li>
+                    <li><a href="@Url.Action("Index", "Manufacts")"><i class="fa fa-circle-o"></i> Nhà sản xuất</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-money"></i>
+                    <span>Giao diện</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Menus")"><i class="fa fa-circle-o"></i> Menu</a></li>
+                    <li><a href="@Url.Action("Index", "MenuLocations")"><i class="fa fa-circle-o"></i> Menu Location</a></li>
+                    <li><a href="@Url.Action("Index", "Banners")"><i class="fa fa-circle-o"></i> Danh sách Banners</a></li>
+                    <li><a href="@Url.Action("Index", "Sliders")"><i class="fa fa-circle-o"></i> Danh sách Slider</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-money"></i>
+                    <span>Quản lý nội dung</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Page")"><i class="fa fa-circle-o"></i> Trang tỉnh</a></li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Categories")"><i class="fa fa-circle-o"></i> Chuyên mục</a></li>
+                </ul>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Posts")"><i class="fa fa-circle-o"></i> Bài viết</a></li>
+                </ul>
+            </li>
+            
+            
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-money"></i>
+                    <span>Quản lý User</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Create", "Users")"><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                    <li><a href="@Url.Action("Index", "Users")"><i class="fa fa-circle-o"></i> Danh sách User</a></li>
+                    <li><a href="@Url.Action("Index", "Roles")"><i class="fa fa-circle-o"></i> Nhóm quyền hệ thống</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-money"></i>
+                    <span>Quản lý danh mục</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="@Url.Action("Index", "Coupons")"><i class="fa fa-circle-o"></i> Mã khuyến mãi</a></li>
+                    <li><a href="@Url.Action("Index", "OrderStatus")"><i class="fa fa-circle-o"></i> Trạng thái đơn hàng</a></li>
+                    <li><a href="@Url.Action("Index", "Provinces")"><i class="fa fa-circle-o"></i> Tỉnh thành</a></li>
+                    <li><a href="@Url.Action("Index", "Districts")"><i class="fa fa-circle-o"></i> Quận huyện</a></li>
+                    <li><a href="@Url.Action("Index", "Transporters")"><i class="fa fa-circle-o"></i> Nhà vận chuyển</a></li>
+                    <li><a href="@Url.Action("Index", "TransportTypes")"><i class="fa fa-circle-o"></i> Loại vận chuyển</a></li>
+                    <li><a href="@Url.Action("Index", "Transports")"><i class="fa fa-circle-o"></i> Phí vận chuyển</a></li>
+                    <li><a href="@Url.Action("Index", "Testimonials")"><i class="fa fa-circle-o"></i> Nhận xét của KH</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

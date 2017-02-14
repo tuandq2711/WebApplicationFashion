@@ -1,0 +1,56 @@
+﻿@model IEnumerable<FashionGo.Models.Entities.Product>
+@using FashionGo.Models
+
+<table class="table mycart">
+    <thead>
+        <tr>
+            <th>Sản phẩm</th>
+            <th>Xóa</th>
+            <th>Giá tiền</th>
+            <th>Số lượng</th>
+            <th>Thành tiền</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr class="start-item">
+                <td rowspan="2"><img src="@p.FeaturedImage" width="65" height="65" class="img-thumbnail" /></td>
+                <td class="action removeProduct">
+                    <a href="#" class="removeProduct">
+                        <i class="removeProduct fa fa-close text-danger" data-id="@p.Id" data-id-remove="@p.Id"></i>
+                    </a>
+                </td>
+                <td>@Html.FormatValue(p.PriceAfter, "{0:0,0}")<sup>đ</sup></td>
+                <td>
+                    <select data-id="@p.Id" name="quantity" class="quantity spquantity">
+                        @for (int i = 1; i < 10; i++)
+                        {
+                            var selected = p.Amount == i ? "selected" : "";
+                            <option value="@i" @selected>@i</option>
+                        }
+                    </select>
+                </td>
+                <td id="Amount-@p.Id">@Html.FormatValue(p.PriceAfter * p.Amount, "{0:0,0}")<sup>đ</sup></td>
+            </tr>
+            <tr class="end-item">
+                <td colspan="4">@p.Name</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="3">
+                <a href="/" class="btn btn-success">
+                    <i class="fa fa-cart-plus" aria-hidden="true"></i> Thêm sản phẩm khác
+                </a>
+            </th>
+            <th style="text-align:right">Tổng đơn hàng:</th>
+            <th class="nn-cart-total">@Html.FormatValue(ShoppingCart.Cart.Total, "{0:0,0}")<sup>đ</sup></th>
+        </tr>
+    </tfoot>
+</table>
+
+
+

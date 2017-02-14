@@ -1,0 +1,93 @@
+﻿@model FashionGo.Models.Entities.Post
+
+@{
+    ViewBag.Title = string.IsNullOrEmpty(Model.MetaTitle) ? Model.Title : Model.MetaTitle;
+    Layout = "~/Views/Shared/_BlogLayout.cshtml";
+}
+
+@section HeaderMetas
+{
+    <meta name="description" content="@Html.Raw(Model.MetaDescription)">
+    <meta name="keywords" content="@Html.Raw(Model.MetaKeyword)">
+    <meta name="author" content="SieuVietGroup">
+    <meta property="og:url" content="@Request.Url" />
+    <meta property="og:type" content="Post" />
+    <meta property="og:title" content="@Html.Raw(Model.MetaTitle)" />
+    <meta property="og:description" content="@Html.Raw(Model.MetaDescription)" />
+    <meta property="og:image" content="@Model.Image.ResolveServerUrl()" />
+}
+
+@section HeaderScripts{
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5728669d60870d14"></script>
+
+    <!-- facebook comments -->
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.Id = id;
+            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6&appId=964989690286521";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+}
+
+<div class="wrap-content">
+    <div class="blog" itemscope="" itemtype="http://schema.org/Blog">
+        <div class="page-header clearfix">
+            <h1 class="page-title">@Model.Title</h1>
+        </div>
+        
+        <!-- Aside -->
+        <aside class="article-aside clearfix">
+            <dl class="article-info  muted">
+                <dt class="article-info-term">
+                    Chi tiết bài viết
+                </dt>
+                <dd class="createdby hasTooltip" itemprop="author" itemscope="" itemtype="http://schema.org/Person" title="" data-original-title="Đăng bởi:">
+                    <span class="">Bởi: </span>
+                    <span class="brand-primary-color" itemprop="name">FG</span> /
+                </dd>
+                <dd class="create text-muted hidden">
+                    <time datetime="@Model.createDate" itemprop="dateCreated">
+                        <div class="blogDate">
+                            <span class="post-day brand-primary-color">@Model.createDate.Value.ToString("dd")-</span>
+                            <span class="post-month">@Model.createDate.Value.ToString("M")-</span>
+                            <span class="post-year brand-primary-color">@Model.createDate.Value.ToString("yyyy")</span>
+                        </div>
+                    </time>
+                </dd>
+                <dd class="category-name hasTooltip" title="" data-original-title="Chuyên mục: ">
+                    <span class="">Chuyên mục</span>
+                    <a href="@Url.RouteUrl("BlogCategory", new { slug = Model.Category.Slug })" title="@Model.Category.Name"><span itemprop="genre">@Model.Category.Name</span></a>
+                </dd>
+            </dl>
+        </aside>
+
+        <section class="article-content clearfix" itemprop="articleBody">
+
+            @Html.Raw(Model.Content)
+
+        </section>
+
+        <div class="tags">
+            <span class="tag-6 tag-list0" itemprop="keywords">
+                <a href="#" class="label label-info">
+                    Tin tức mới,
+                </a>
+            </span>
+            <span class="tag-8 tag-list1" itemprop="keywords">
+                <a href="#" class="label label-info">
+                    Thời trang
+                </a>
+            </span>
+        </div>
+
+        <div class="addthis_native_toolbox"></div>
+
+        <div class="fb-comments" data-href="@HttpContext.Current.Request.Url.AbsoluteUri" data-width="815" data-numposts="5"></div>
+       </div>
+    </div>
+

@@ -1,0 +1,287 @@
+﻿@model FashionGo.Models.Entities.Product
+@using FashionGo.Models.Entities
+@using System.Web.Configuration
+
+@{
+    ViewBag.Title = Html.Raw(string.IsNullOrEmpty(Model.MetaTitle) ? Model.Name : Model.MetaTitle);
+    Random rd = new Random();
+    ProductCategory category = Model.ProductCategory;
+    Layout = "~/Views/Shared/_LayouDetail.cshtml";
+}
+
+@section HeaderMetas
+{
+    <meta name="description" content="@Html.Raw(Model.MetaDescription)" />
+    <meta name="keywords" content="@Html.Raw(Model.MetaKeyword)" />
+    <meta name="author" content="FashionGo.vn" />
+    <meta property="og:url" content="@Request.Url" />
+    <meta property="og:type" content="Product" />
+    <meta property="og:title" content="@Html.Raw(Model.MetaTitle)" />
+    <meta property="og:description" content="@Html.Raw(Model.MetaDescription)" />
+    <meta property="og:image" content="@Model.FeaturedImage.ResolveServerUrl()" />
+}
+
+
+@if (!string.IsNullOrEmpty(category.Banner))
+{
+    <!-- top-banner -->
+    <div class="t3-sl top-banner">
+        <!-- SPOTLIGHT -->
+        <div class="t3-spotlight t3-top-banner  row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="t3-module module " id="Mod140">
+                    <div class="module-inner">
+                        <div class="module-ct">
+                            <div class="custom">
+                                <p>
+                                    <a href="@Url.RouteUrl("ProductCategory", new { slug = Model.ProductCategory.Name.ToAscii(), id = Model.CatId })" title="@Model.ProductCategory.Name">
+                                        <img src="@category.Banner" alt="@category.Name" />
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SPOTLIGHT -->
+    </div>
+    <!-- //top-banner -->
+}
+
+
+<div class="wrap-content">
+    <div id="system-message-container">
+    </div>
+   
+    <!-- Microdata for Rich Snippets -->
+    <div itemscope="" itemtype="http://schema.org/Product" style="display: none;">
+        <span itemprop="brand">FashionGo</span>
+        <span itemprop="name">@Model.Name</span>
+        <img id="product-img-@Model.Id" itemprop="image" src="@Model.FeaturedImage">
+        <span itemprop="description">@Model.Description</span>
+        Product #: <span itemprop="mpn">FG-@Model.Id</span>
+        @*<span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                <span itemprop="ratingValue"><img src="FashonPro/components/com_eshop/assets/images/stars-4.png"></span> based on <span itemprop="reviewCount">2</span> reviews
+            </span>*@
+        <span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+            Regular price: $245.99
+            <meta itemprop="priceCurrency" content="VND">
+            <span itemprop="price">@Html.FormatValue(Model.Price, "{0:0,0}")</span>Đ
+            <span itemprop="availability" href="http://schema.org/InStock">99</span>
+        </span>
+    </div>
+    <div class="product-info">
+        <div class="row-fluid hidden-lg hidden-sm hidden-md">
+            <div class="span12">
+                <h1 class="eshop-product-details-title">
+                    @Model.Name
+                </h1>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span7">
+                <div class="image-additional hidden-xs slick-initialized slick-slider slick-vertical">
+                    <div class="slick-list draggable" tabindex="0" style="height: 504px;">
+                        <div class="slick-track" @*style="opacity: 1; height: 1008px; transform: translate3d(0px, 0px, 0px);"*@>
+                            @{
+                                var stt = 0;
+                                var active = "";
+                                var firstImage = "";
+                                string[] images = Model.Images.Split(',');
+                                foreach (string image in images)
+                                {
+                                    if (stt == 0)
+                                    {
+                                        firstImage = image;
+                                    }
+                                    active = stt < 4 ? "slick-active" : "";
+                                    <div class="slick-slide @active" index="@stt" @*style="width: 100px;"*@>
+                                        <a class="product-image cboxElement" href="@image">
+                                            <img src="@image.Replace("uploads/", "uploads/_thumbs/")">
+                                        </a>
+                                    </div>
+                                    stt = stt + 1;
+                                }
+                            }
+                        </div>
+                    </div>
+                    <button type="button" data-role="none" class="slick-prev slick-disabled" style="display: inline-block;">Quay lại</button>
+                    <button type="button" data-role="none" class="slick-next" style="display: block;">Tiếp theo</button>
+                </div>
+                <div class="image" id="main-image-area">
+                    <a class="product-image cboxElement" href="@firstImage" title="@Model.Name">
+                        <img id="product-image-@Model.Id" src="@firstImage" title="@Model.Name" alt="@Model.Name">
+                    </a>
+                </div>
+                <div class="image-additional-horz hidden-lg hidden-sm hidden-md slick-initialized slick-slider">
+                    <div class="slick-list draggable" tabindex="0">
+                        <div class="slick-track" style="opacity: 1; width: 0px; transform: translate3d(0px, 0px, 0px);">
+                            @{
+                                stt = 0;
+                                foreach (string image in images)
+                                {
+                                    active = stt < 4 ? "slick-active" : "";
+                                    <div class="slick-slide @active" index="@stt" style="width: 0px;">
+                                        <a class="product-image cboxElement" href="@image">
+                                            <img src="@image.Replace("uploads/images", "uploads/_thumbs/images")">
+                                        </a>
+                                    </div>
+                                    stt = stt + 1;
+                                }
+                            }
+                        </div>
+                    </div>
+                    <button type="button" data-role="none" class="slick-prev slick-disabled" style="display: inline-block;">Quay lại</button>
+                    <button type="button" data-role="none" class="slick-next" style="display: block;">Tiếp theo</button>
+                </div>
+            </div>
+            <div class="span5">
+                <div class="row-fluid hidden-xs">
+                    <div class="span12">
+                        <h1 class="eshop-product-details-title">
+                            @Model.Name
+                        </h1>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="product-review">
+                        <p>
+                            @*<img src="FashonPro/components/com_eshop/themes/fashionpro/images/stars-4.png">*@
+                            <i class="fa fa-tag" aria-hidden="true"></i>@rd.Next(10)
+                            <i class="fa fa-eye" aria-hidden="true"></i>@Model.Views
+                            | <a href="@Request.Url#reviews" style="cursor: pointer;">Viết nhận xét</a>
+                        </p>
+                    </div>
+                    <div>
+                        <div class="product-desc">
+                            <address>
+                                @*<strong>Xuất xứ:</strong>
+                                    <span>Việt Nam</span>
+                                    <br>*@
+                                <strong>Mã sản phẩm:</strong>
+                                <span>FG-@Model.Id</span>
+                                <br>
+                                <div class="product-availability">
+                                    <strong>Trạng thái:</strong>
+                                    <span class="label label-success">Còn hàng</span>
+                                </div>
+                                <br />
+                                <div class="product-dimensions">
+                                    @Model.Description
+                                </div>
+                            </address>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="product-price" id="product-price">
+                            <h2>
+                                <strong>
+                                    <span class="eshop-price">@Html.FormatValue(Model.PriceAfter, "{0:0,0}") đ</span>
+                                    @if (Model.Discount.Value > 0)
+                                    {
+                                        <span class="eshop-base-price">@Html.FormatValue(Model.Price, "{0:0,0}")đ</span>
+                                    }
+                                </strong>
+                                <br>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="product-cart clearfix">
+                            <div class="pull-left no_margin_left">
+                                <input type="hidden" name="id" value="@Model.Id">
+                                <div class="input-append input-prepend input-group bootstrap-touchspin">
+                                    @*<input type="hidden" name="id" value="@Model.Id">*@
+                                    <span class="eshop-quantity">
+                                        <input type="text" class="eshop-quantity-value" id="quantity_@Model.Id" name="quantity" value="1">
+                                        <span class="input-group-btn-vertical">
+                                            <a class="btn btn-default button-minus spin-up" id="@Model.Id" data="up"><i class="icon-chevron-up"></i></a>
+                                            <a class="btn btn-default button-plus spin-down" id="@Model.Id" data="down"><i class="icon-chevron-down"></i></a>
+                                        </span>
+                                    </span>
+                                </div>
+                                <button id="add-to-cart_@Model.Id" class="btn btn-primary add-to-cart" onclick="flyToCart(@Model.Id)" type="button">Thêm vào giỏ</button>
+                            </div>
+                            <div class="pull-right">
+                                <p>
+                                    <a class="btn" data-toggle="tooltip" data-original-title="Thêm vào danh sách yêu thích" title="Thêm vào danh sách yêu thích" style="cursor: pointer;" onclick="addToWishList(@Model.Id, '@WebConfigurationManager.AppSettings["SiteUrl"].ToString()')"><i class="icon-heart"></i><span class="text-hide">Thêm vào danh sách yêu thích</span></a>
+                                    <a class="btn" data-toggle="tooltip" data-original-title="Thêm vào So sánh" title="Thêm vào so sánh" style="cursor: pointer;" onclick="addToCompare(15, 'FashonPro/index.html')"><i class="icon-retweet"></i><span class="text-hide">Thêm vào so sánh</span></a>
+                                    <a class="btn" data-toggle="tooltip" data-original-title="Hỏi về sản phẩm này" title="Hỏi về sản phẩm này" style="cursor: pointer;" onclick="askQuestion(@Model.Id, '@WebConfigurationManager.AppSettings["SiteUrl"].ToString()')"><i class="icon-question"></i><span class="text-hide">Hỏi về sản phẩm này</span></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="product-share">
+                            <div class="ps_area clearfix">
+                                <div class="ps_facebook_like">
+                                    <div class="fb-like fb_iframe_widget" data-send="true" data-width="650" data-show-faces="1" vdata-font="arial" data-colorscheme="light" layout="button_count" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=372958799407679&amp;color_scheme=light&amp;container_width=122&amp;href=@Request.Url.IsAbsoluteUri.ToString()?layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=true&amp;show_faces=true&amp;width=650">
+                                        <span style="vertical-align: top; width: 0px; height: 0px; overflow: hidden;">
+                                            <iframe name="f354a70ee36c244" width="650px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/plugins/like.php?app_id=372958799407679&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FLcj5EtQ5qmD.js%3Fversion%3D42%23cb%3Df390d41f5181b8%26domain%3D%26origin%3Dfile%253A%252F%252F%252Ff1639006458995c%26relation%3Dparent.parent&amp;color_scheme=light&amp;container_width=122&amp;href=@Request.Url.IsAbsoluteUri.ToString()?layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=true&amp;show_faces=true&amp;width=650" style="border: none; visibility: visible; width: 0px; height: 0px;"></iframe>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="ps_twitter">
+                                    <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="https://platform.twitter.com/widgets/tweet_button.a9003d9964444592507bbb36b98c709b.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=href=@Request.Url.IsAbsoluteUri.ToString()?related=anywhereTheJavascriptAPI&amp;size=m&amp;text=Cotton%20Shirt%20-%20EShop%20Fashion%20Pro%20Template&amp;time=1471027511079&amp;type=share&amp;url=href=@Request.Url.IsAbsoluteUri.ToString()" style="position: static; visibility: visible; width: 60px; height: 20px;" data-url="href=@Request.Url.IsAbsoluteUri.ToString()"></iframe>
+                                </div>
+                                <div class="ps_pinit">
+                                    <a href="http://pinterest.com/pin/create/button/?url=href=@Request.Url.IsAbsoluteUri.ToString()?media=href=@Request.Url.IsAbsoluteUri.ToString()&amp;description=@Model.Name" count-layout="horizontal" class="pin-it-button">Pin It</a>
+                                </div>
+                                <div class="ps_linkedin">
+                                    <span class="IN-widget" style="line-height: 1; vertical-align: baseline; display: inline-block; text-align: center;"><span style="padding: 0px !important; margin: 0px !important; text-indent: 0px !important; display: inline-block !important; vertical-align: baseline !important; font-size: 1px !important;"><span id="li_ui_li_gen_1471027509856_0"><a id="li_ui_li_gen_1471027509856_0-link" href="javascript:void(0);"><span id="li_ui_li_gen_1471027509856_0-logo">in</span><span id="li_ui_li_gen_1471027509856_0-title"><span id="li_ui_li_gen_1471027509856_0-mark"></span><span id="li_ui_li_gen_1471027509856_0-title-text">Share</span></span></a></span></span><span style="padding: 0px !important; margin: 0px !important; text-indent: 0px !important; display: inline-block !important; vertical-align: baseline !important; font-size: 1px !important;"><span id="li_ui_li_gen_1471027509871_1-container" class="IN-right IN-hidden"><span id="li_ui_li_gen_1471027509871_1" class="IN-right"><span id="li_ui_li_gen_1471027509871_1-inner" class="IN-right"><span id="li_ui_li_gen_1471027509871_1-content" class="IN-right">0</span></span></span></span></span></span>
+                                    <script type="IN/Share+init" data-counter="right">
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eshop-information">
+            <div class="eshop-wrap-desc">
+                <h3 class="eshop-info-title eshop-desc"><span class="title-block">Chi tiết sản phẩm</span></h3>
+                <div class="description" id="description">
+                    <div class="eshop-description">
+                        @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
+                    </div>
+                </div>
+            </div>
+
+            <div class="eshop-wrap-reviews">
+                <h3 class="eshop-info-title eshop-reviews"><span class="title-block">Bình luận Facebook</span></h3>
+                <div class="reviews" id="reviews">
+                    <input type="hidden" name="review-tab" id="review-tab" value="0">
+                    <div class="row-fluild">
+                        <div class="fb-comments" width="847px" data-href="@Request.Url.AbsoluteUri.ToString()" data-numposts="5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Action("_relatedProduct", "Product", new { product = Model })
+
+@section scripts{
+    
+<script type="text/javascript">
+        jQuery(document).ready(function($){
+            $(".product-image").colorbox({
+                rel: 'colorbox'
+            });
+
+            var mainimage = $('#main-image-area');
+            $('.option-image').each(function() {
+                $(this).children().each(function() {
+                    mainimage.append($(this).clone().removeAttr('class').removeAttr('id').removeAttr('href').addClass($(this).attr('id')).hide().click(function() {
+                        $('#' + $(this).attr('class')).click();
+                    }));
+                });
+            });
+        });
+</script>
+
+    
+}

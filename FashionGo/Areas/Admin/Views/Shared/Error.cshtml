@@ -1,0 +1,25 @@
+﻿@model IEnumerable<string>
+@{ ViewBag.Title = "Error";}
+
+<div class="alert alert-danger">
+    @*@switch (Model.Count()) {
+        case 0:
+            @: Something went wrong. Please try again
+            break;
+        case 1:
+            @Model.First();
+            break;
+        default:
+            @: The following errors were encountered:
+            <ul>
+                @foreach (string error in Model) {
+                    <li>@error</li>
+                }
+            </ul>
+            break;*@
+    Access Deny. You are not have permission for this area.
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <a href="/home/index" class="btn btn-sm btn-primary pull-right"> Return Home</a>
+    }
+</div>
+

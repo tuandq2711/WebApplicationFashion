@@ -1,0 +1,173 @@
+﻿@using FashionGo.Models.Entities
+@using FashionGo.Models
+@model IEnumerable<FashionGo.Models.Entities.Product>
+
+<!-- Banner Top -->
+@if (ViewBag.BannerTop != null)
+{
+    <div id="BannerTop" class="text-center">
+        @Html.Raw(ViewBag.BannerTop.Content)
+    </div>
+}
+
+
+<div class="eshop-header">
+    <!-- SPOTLIGHT 2 -->
+    <div class="container">
+        <!-- SPOTLIGHT -->
+        <div class="t3-spotlight t3-eshop-header  row">
+            <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                <div class="t3-module module " id="Mod90">
+                    <div class="module-inner">
+                        <div class="module-ct">
+                            <div id="currency" class="eshop-currency">
+                                <a class="active" title="Follow Us">
+                                    Follow Us
+                                </a>
+                                <a title="Facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a title="google-plus">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                                <a title="twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a title="instagram">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 hidden-xs">
+                @if ( ! Request.IsAuthenticated)
+                {
+                    @Html.Action("_LoginForm", "Account")
+                }
+                <div class="t3-module module " id="Mod1">
+                    <div class="module-inner">
+                        <div class="module-ct">
+                            <ul class="nav  nav-pills  nav-pills">
+                                <li class="item-109"><a href="@Url.RouteUrl("ProductFavorite")"><i class="icon fa fa-heart"></i> Sản phẩm yêu thích</a></li>
+                                <li class="item-108"><a href="@Url.RouteUrl("ShopingCart")"><i class="fa fa-shopping-bag"></i> Giỏ hàng</a></li>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <li class="item-107"><a href="@Url.RouteUrl("AccountManage")"><i class="fa fa-user"></i> Tài khoản</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SPOTLIGHT -->
+    </div>
+    <!-- //SPOTLIGHT 2 -->
+</div>
+<header id="t3-header" class="container t3-header">
+    <div class="row">
+        <!-- LOGO -->
+        <div class="col-xs-12 col-sm-4 logo">
+            <div class="logo-image">
+                <a href="/" title="FashionGo - Lựa chọn cho phong cách!">
+                    <img class="logo-img img-responsive" src="~/Content/images/logo-fashiongo.png" alt="FashionGo - Lựa chọn cho phong cách!" />
+                    <span>FashionGo - Lựa chọn cho phong cách!</span>
+                </a>
+                <small class="site-slogan"></small>
+            </div>
+        </div>
+        <!-- //LOGO -->
+
+        <div class="col-xs-12 col-sm-8">
+            <div class="eshop-header-2">
+                <!-- SPOTLIGHT -->
+                <div class="t3-spotlight t3-eshop-header2  row">
+                    <div class=" col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="t3-module module " id="Mod95">
+                            <div class="module-inner">
+                                <div class="module-ct">
+
+                                    <div class="custom">
+                                        <h2>0968-407-477</h2>
+                                        <p>Hotline đặt hàng 24/7 (8H-20H)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        @Html.Action("_HeaderSearchForm", "Product")
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        @Html.Action("_MiniCart", "Cart")
+                    </div>
+                </div>
+                <!-- SPOTLIGHT -->
+            </div>
+        </div>
+
+    </div>
+</header>
+
+<!-- Need this wrapper for off-canvas menu. Remove if you don't use of-canvas -->
+
+<!-- MAIN NAVIGATION -->
+<nav id="t3-mainnav" class="wrap navbar nav-default-class navbar-default t3-mainnav">
+    <div class="container">
+        <div class="relative-wrap">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".t3-navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="t3-navbar-collapse navbar-collapse collapse"></div>
+
+            <div class="logo-image">
+                <a href="/" title="FashionGo - Lựa chọn cho phong cách!">
+                    <img class="logo-img img-responsive" src="~/Content/images/logo-fashiongo.png" alt="FashionGo - Lựa chọn cho phong cách!" />
+                    <span>FashionGo - Lựa chọn cho phong cách!</span>
+                </a>
+                <small class="site-slogan"></small>
+            </div>
+
+            <div class="t3-navbar navbar-collapse collapse">
+
+                <button class="btn btn-primary off-canvas-toggle " type="button" data-pos="left" data-nav="#t3-off-canvas" data-effect="off-canvas-effect-4">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- OFF-CANVAS SIDEBAR -->
+                <div id="t3-off-canvas" class="t3-off-canvas ">
+                    <div class="t3-off-canvas-header">
+                        <h2 class="t3-off-canvas-header-title">FashionGo Menu</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="t3-off-canvas-body">
+                        <div class="t3-module module " id="Mod141">
+                            <div class="module-inner">
+                                <div class="module-ct">
+                                    @Html.Action("_MobileMenu", "Menu")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- //OFF-CANVAS SIDEBAR -->
+
+                <div class="t3-megamenu animate fading" data-duration="400" data-responsive="true">
+                    @Html.Action("_MainMenu", "Menu")
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</nav>
+<!-- //MAIN NAVIGATION -->
+<!-- slideshow -->

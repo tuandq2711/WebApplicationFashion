@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! - Open Source Content Management" -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Blog - EShop Fashion Pro Template</title>
+		<description><![CDATA[]]></description>
+		<link>http://eshoptemplates.com/fashionpro/blog/12-uncategorised/standard-post.html</link>
+		<lastBuildDate>Tue, 09 Aug 2016 04:19:29 +0000</lastBuildDate>
+		<generator>Joomla! - Open Source Content Management</generator>
+		<atom:link rel="self" type="application/rss+xml" href="http://eshoptemplates.com/fashionpro/blog/12-uncategorised/standard-post.feed?type=rss"/>
+		<language>en-gb</language>
+		<managingEditor>giangdt@joomdonation.com (Demo of EShop Fashion Pro Template)</managingEditor>
+	</channel>
+</rss>
